@@ -1,0 +1,10 @@
+.td{
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+th,td{
+    border: 1px solid #443c68;
+    padding: 0.8rem;
+    line-height: 1;
+}
