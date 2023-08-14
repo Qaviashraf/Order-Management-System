@@ -7,13 +7,7 @@ import { PiUserFocusThin } from 'react-icons/Pi'
 import { AiFillSetting } from 'react-icons/Ai'
 
 
-
 export const Sidebar = () => {
-
-
-  if (window.location.pathname==="/Login" | window.location.pathname==="/SignIn" ) return null; 
-
-
 
   return (
     <div className="flex flex-col  pb-96 pt-16 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl  shadow-2xl shadow-black ">
@@ -26,7 +20,7 @@ export const Sidebar = () => {
 
         <div className="flex flex-col space-y-2">
 
-          <Link to="/" className="flex cursor-pointer hover:bg-gray-800 rounded">
+          <Link to="/Dashboard" className="flex cursor-pointer hover:bg-gray-800 rounded">
             <LuLayoutDashboard className="m-2 mr-4 text-xl" />
             <div className="text-lg ">
               Dashboard
