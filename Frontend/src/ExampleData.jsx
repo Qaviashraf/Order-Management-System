@@ -94,7 +94,7 @@ export const ExampleData = [
             },
             {
                 order_id:"0003",
-                customer_name:"Qavi",
+                customer_name:"Usman",
                 mobile_number:"2819489412",
                 email:"qavi@gmail.com",
                 address:"Nagin",
@@ -113,7 +113,7 @@ export const ExampleData = [
         password:"123",
         orders:[
             {
-                order_id:"0001",
+                order_id:"0003",
                 customer_name:"Usman",
                 mobile_number:"2819489412",
                 email:"Usman@gmail.com",
@@ -124,7 +124,7 @@ export const ExampleData = [
                 deliveryDate:"2023/03/23",
             },
             {
-                order_id:"0002",
+                order_id:"0003",
                 customer_name:"Usman",
                 mobile_number:"2819489412",
                 email:"Usman@gmail.com",
@@ -135,8 +135,8 @@ export const ExampleData = [
                 deliveryDate:"2023/03/23",
             },
             {
-                order_id:"0003",
-                customer_name:"Usman",
+                order_id:"0007",
+                customer_name:"MAlik",
                 mobile_number:"2819489412",
                 email:"Usman@gmail.com",
                 address:"Orangi",
@@ -146,7 +146,7 @@ export const ExampleData = [
                 deliveryDate:"2023/01/23",
             },
             {
-                order_id:"0004",
+                order_id:"0003",
                 customer_name:"Usman",
                 mobile_number:"2819489412",
                 email:"Usman@gmail.com",
@@ -157,15 +157,53 @@ export const ExampleData = [
                 deliveryDate:"2023/09/23",
             },
             {
-                order_id:"0005",
+                order_id:"0003",
                 customer_name:"Usman",
                 mobile_number:"2819489412",
                 email:"Usman@gmail.com",
                 address:"Orangi",
                 category:"Bike",
                 product:"Super Power Bike",
-                status:"Delivered",
-                deliveryDate:"2023/03/23",
+                status:"Pending",
+                deliveryDate:"14 August",
+            },
+        ]
+    },
+    {
+        id:"",
+        firstname:"",
+        lastname:"",
+        email:"",
+        password:"",
+        orders:[
+            {
+                order_id:"0003",
+                customer_name:"Usman",
+                mobile_number:"2819489412",
+                email:"Usman@gmail.com",
+                address:"Orangi",
+                product:"Super Power Bike",
+                status:"Pending",
+                deliveryDate:"14 August",
+            },
+        ]
+    },
+    {
+        id:"",
+        firstname:"",
+        lastname:"",
+        email:"",
+        password:"",
+        orders:[
+            {
+                order_id:"0003",
+                customer_name:"Usman",
+                mobile_number:"2819489412",
+                email:"Usman@gmail.com",
+                address:"Orangi",
+                product:"Super Power Bike",
+                status:"Pending",
+                deliveryDate:"14 August",
             },
         ]
     }

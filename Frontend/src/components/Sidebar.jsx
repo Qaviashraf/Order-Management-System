@@ -10,10 +10,10 @@ import { AiFillSetting } from 'react-icons/Ai'
 export const Sidebar = () => {
 
   return (
-    <div className="flex flex-col  pb-96 pt-16 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl  shadow-2xl shadow-black ">
+    <div className="flex flex-col pb-96 pt-16 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
       <div className="mb-2">
 
-        <div className='flex justify-center '>
+        <div className='flex justify-center'>
           <SiGoogletagmanager className='p-2 text-5xl' />
           <div className="text-xl font-bold mb-9 p-2">My Orders</div>
         </div>
