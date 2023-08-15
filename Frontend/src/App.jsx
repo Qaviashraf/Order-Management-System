@@ -8,6 +8,7 @@ import {Dashboard} from './Pages/Dashboard'
 import {Orders} from './Pages/Orders'
 import {Customers} from './Pages/Customers'
 import {Setting} from './Pages/Setting'
+import {AddOrders} from './Pages/AddOrders'
 
 // COMPONENTS
 import {Sidebar} from './components/Sidebar'
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Setting" element={ <Setting/> } />
         <Route path="/Login" element={ <Login/> } />
         <Route path="/SignIn" element={ <SignIn/> } />
+        <Route path="/AddOrders" element={ <AddOrders/> }/>
       </Routes>
 
 
