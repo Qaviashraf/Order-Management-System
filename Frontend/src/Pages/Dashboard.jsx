@@ -25,9 +25,9 @@ export const Dashboard = () => {
     return (
         <>
         
-        <div className=" m-2 border-black border-2 rounded-2xl  w-4/5 shadow-xl shadow-black">
+        <div className=" dark:bg-black m-2 border-black border-2 rounded-2xl  w-4/5 shadow-xl shadow-black">
 
-            <div className="flex  m-4 w-fit text-xl font-semibold tracking-widest text-gray text-slate-800">
+            <div className="flex dark:text-white m-4 w-fit text-xl font-semibold tracking-widest text-gray text-slate-800">
                 <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
                 <h1 className='mt-4 ml-2 mr-96 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
                 <BsBell className='ml-96 mt-4 text-2xl'/>

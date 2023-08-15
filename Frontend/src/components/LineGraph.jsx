@@ -51,7 +51,7 @@ export const LineGraph = () =>{
               "#f3ba2f",
               "#2a71d0",
             ],
-            borderColor: "black",
+            borderColor: "black dark:white",
             borderWidth: 2,
           },
         ],
