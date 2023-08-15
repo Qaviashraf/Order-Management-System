@@ -1,5 +1,7 @@
 
 import {  Routes, Route } from "react-router-dom"
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 // PAGES
 import {Login} from './Pages/Login'
@@ -15,20 +17,25 @@ import {Sidebar} from './components/Sidebar'
 
 function App() {
   
+  
+  const location = useLocation();
+
+  const hideSidebar = location.pathname === '/' || location.pathname === '/SignIn';
+  
   return (
     
       
 
       <div className='flex'>
         
-        <Sidebar/>
+        {!hideSidebar && <Sidebar/>}
        <Routes>
        
-        <Route path="/" element={ <Dashboard/>  } />
+        <Route path="/Dashboard" element={ <Dashboard/>  } />
         <Route path="/Orders" element={ <Orders/> } />
         <Route path="/Customers" element={ <Customers/> } />
         <Route path="/Setting" element={ <Setting/> } />
-        <Route path="/Login" element={ <Login/> } />
+        <Route path="/" element={ <Login/> } />
         <Route path="/SignIn" element={ <SignIn/> } />
         <Route path="/AddOrders" element={ <AddOrders/> }/>
       </Routes>
