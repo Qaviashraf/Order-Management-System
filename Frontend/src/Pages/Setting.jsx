@@ -80,9 +80,9 @@ export const Setting = () => {
             </div>
             <div className="flex justify-between bg-slate-200 m-2 p-3 shadow-lg cursor-pointer">
               <p className="hover:opacity-10">Dark Theme</p>
-              <button onClick={toggleTheme} className="mr-5 border-0">
+              <div onClick={toggleTheme} className="mr-5 border-0">
                 <DarkMode theme={toggleTheme} />
-              </button>
+              </div>
             </div>
             <div onClick={handleClick1} className="flex justify-between bg-slate-200 m-2 p-3 shadow-lg cursor-pointer">
               <p className="hover:opacity-10">Log Out </p>

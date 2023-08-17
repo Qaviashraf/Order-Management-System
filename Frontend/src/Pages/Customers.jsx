@@ -9,14 +9,15 @@ export const Customers = ( ) => {
     const [orders, setOrders] = useState([]);
     const [findOrders, setFindOrders] = useState([]);
     const navigate = useNavigate();
-  
-  
+  const id = localStorage.getItem('id');
+  const findid = ExampleData.findIndex((item)=>item.id===id)
     const getData = () => {
       try{
         const res = { data: ExampleData }
         if(res.data.length > 0){
+            
           const extractedOrders = res.data.map((item) => item.orders[0]);
-          const pendingorders = extractedOrders.filter((item) => item.order.status.includes())
+          const pendingorders = extractedOrders.filter((item) => item.status.toLowerCase() ==="pending")
           setOrders(pendingorders);
           setFindOrders(pendingorders)
         }
@@ -24,6 +25,7 @@ export const Customers = ( ) => {
         console.log(e);
       }
     }
+    console.log(id)
   
     useEffect(() => {
       getData();
@@ -35,7 +37,9 @@ export const Customers = ( ) => {
   
   
     const Filter = (e) => {
-      setFindOrders(orders.filter((item) => item.order_id.includes(e.target.value)));
+        let query = e.target.value
+        query = query.toLowerCase()
+      setFindOrders(orders.filter((item) => item.customer_name.toLowerCase().includes(query)));
     }
      
     return(

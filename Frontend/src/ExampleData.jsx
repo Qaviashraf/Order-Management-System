@@ -164,7 +164,7 @@ export const ExampleData = [
                 address: "Nagin",
                 category: "Bike",
                 product: "Super Power Bike",
-                status: "pendings",
+                status: "Pending",
                 deliveryDate: "2023/01/23",
             },
             {

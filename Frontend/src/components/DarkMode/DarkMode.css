@@ -41,7 +41,7 @@
     background: linear-gradient(180deg, #777, #3a3a3a);
 }
 .dark_mode_label:active:after {
-    width: px;
+    width: 30px;
 }
 
 .dark_mode_label svg {
