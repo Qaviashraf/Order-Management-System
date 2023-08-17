@@ -40,11 +40,12 @@ export const Orders = () => {
 
   return (
     <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
-      <div className="flex justify-center">
+      <div className="flex justify-between">
 
-        <div className="m-2 mr-96 px-0.5  border-black border-2  rounded-3xl h-fit ">
-          <input type="text" placeholder="Search Order By Id" className="ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
-        </div>
+      <div className="m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
+                <input type="text" placeholder="Search By ID" className="ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
+                <button className="my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
+              </div>
 
         <div className="w-fit h-fit m-3 ml-96 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black">
           <button onClick={CrOrderPage}>Create Order</button>
