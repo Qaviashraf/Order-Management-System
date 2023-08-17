@@ -15,21 +15,21 @@ export const ExampleData = [
                 category:"Laptop",
                 product:"Dell Laptop",
                 status:"Pending",
-                deliveryDate:"2023/08/30",
+                deliveryDate:"2023-08-17",
             },
             {
-                order_id:"0001",
+                order_id:"0002",
                 customer_name:"Abdul Basit",
                 mobile_number:"0313030402",
                 email:"basit@gmail.com",
                 address:"lyari karachi",
                 category:"Mobile",
                 product:"Samsung Note 20",
-                status:"Delivered",
-                deliveryDate:"2023/07/23",   
+                status:"Pending",
+                deliveryDate:"2023-08-17",   
             },
             {
-                order_id:"0001",
+                order_id:"0003",
                 customer_name:"Abdul Basit",
                 mobile_number:"0313030402",
                 email:"basit@gmail.com",
@@ -37,10 +37,10 @@ export const ExampleData = [
                 category:"Airbuds",
                 product:"M-10",
                 status:"Delivered",
-                deliveryDate:"2023/07/23",   
+                deliveryDate:"2023-07-23",   
             },
             {
-                order_id:"0001",
+                order_id:"0004",
                 customer_name:"Abdul Basit",
                 mobile_number:"0313030402",
                 email:"basit@gmail.com",
@@ -48,10 +48,10 @@ export const ExampleData = [
                 category:"Mobile",
                 product:"Realme 25Y",
                 status:"Delivered",
-                deliveryDate:"2023/02/23",   
+                deliveryDate:"2023-02-23",   
             },
             {
-                order_id:"0001",
+                order_id:"0005",
                 customer_name:"Abdul Basit",
                 mobile_number:"0313030402",
                 email:"basit@gmail.com",
@@ -59,7 +59,7 @@ export const ExampleData = [
                 category:"Mobile",
                 product:"IPhone 14",
                 status:"Delivered",
-                deliveryDate:"2023/03/23",   
+                deliveryDate:"2023-03-23",   
             }
         ]
     },
@@ -79,7 +79,7 @@ export const ExampleData = [
                 category:"Bike",
                 product:"Super Power Bike",
                 status:"Delivered",
-                deliveryDate:"2023/01/23",
+                deliveryDate:"2023-01-23",
             },
             {
                 order_id:"0002",
@@ -90,7 +90,7 @@ export const ExampleData = [
                 category:"Car",
                 product:"Sportage",
                 status:"Pending",
-                deliveryDate:"2023/01/23",
+                deliveryDate:"2023-01-23",
             },
             {
                 order_id:"0003",
@@ -101,7 +101,7 @@ export const ExampleData = [
                 category:"Bike",
                 product:"Super Power Bike",
                 status:"Pending",
-                deliveryDate:"2023/05/23",
+                deliveryDate:"2023-05-23",
             },
         ]
     },
@@ -121,7 +121,7 @@ export const ExampleData = [
                 category:"Car",
                 product:"City",
                 status:"Delivered",
-                deliveryDate:"2023/03/23",
+                deliveryDate:"2023-03-23",
             },
             {
                 order_id:"0003",
@@ -132,7 +132,7 @@ export const ExampleData = [
                 category:"Bike",
                 product:"Super Power Bike",
                 status:"Pending",
-                deliveryDate:"2023/03/23",
+                deliveryDate:"2023-03-23",
             },
             {
                 order_id:"0007",
@@ -143,7 +143,7 @@ export const ExampleData = [
                 category:"Car",
                 product:"Civic",
                 status:"Pending",
-                deliveryDate:"2023/01/23",
+                deliveryDate:"2023-01-23",
             },
             {
                 order_id:"0003",
@@ -154,7 +154,7 @@ export const ExampleData = [
                 category:"Bike",
                 product:"Super Power Bike",
                 status:"Delivered",
-                deliveryDate:"2023/09/23",
+                deliveryDate:"2023-09-23",
             },
             {
                 order_id:"0003",
@@ -165,7 +165,7 @@ export const ExampleData = [
                 category:"Bike",
                 product:"Super Power Bike",
                 status:"Pending",
-                deliveryDate:"14 August",
+                deliveryDate:"2023-08-23",
             },
         ]
     },

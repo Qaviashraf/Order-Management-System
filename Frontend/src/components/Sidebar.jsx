@@ -5,12 +5,14 @@ import { LuLayoutDashboard } from 'react-icons/Lu'
 import { TbListDetails } from 'react-icons/Tb'
 import { PiUserFocusThin } from 'react-icons/Pi'
 import { AiFillSetting } from 'react-icons/Ai'
+import { BsBell } from 'react-icons/Bs'
+
 
 
 export const Sidebar = () => {
 
   return (
-    <div className="flex flex-col pb-96 pt-16 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
+    <div className="flex flex-col pb-80 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
       <div className="mb-2">
 
         <div className='flex justify-center'>
@@ -20,28 +22,35 @@ export const Sidebar = () => {
 
         <div className="flex flex-col space-y-2">
 
-          <Link to="/Dashboard" className="flex cursor-pointer hover:bg-gray-800 rounded">
+          <Link to="/Dashboard" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800 rounded">
             <LuLayoutDashboard className="m-2 mr-4 text-xl" />
             <div className="text-lg ">
               Dashboard
             </div>
           </Link>
 
-          <Link to="/Orders" className="flex cursor-pointer hover:bg-gray-800  rounded">
+          <Link to="/Orders" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
             <TbListDetails className="m-2 mr-4 text-xl" />
             <div className="text-lg">
               Orders
             </div>
           </Link>
 
-          <Link to="/Customers" className="flex cursor-pointer hover:bg-gray-800  rounded">
+          <Link to="/Customers" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
             <PiUserFocusThin className="m-2 mr-4 text-xl" />
             <div className="text-lg">
               Customers
             </div>
           </Link>
 
-          <Link to="/Setting" className="flex cursor-pointer hover:bg-gray-800  rounded">
+          <Link to="/Notifications" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
+            <BsBell className="m-2 mr-4 text-xl" />
+            <div className="text-lg">
+              Notifications
+            </div>
+          </Link>
+
+          <Link to="/Setting" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
             <AiFillSetting className="m-2 mr-4 text-xl" />
             <div className="text-lg">
               Settings

@@ -39,10 +39,10 @@ export const Orders = () => {
   }
 
   return (
-    <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
+    <div className='dark:bg-slate-700 dark:text-white m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
       <div className="flex justify-center">
 
-        <div className="m-2 mr-96 px-0.5  border-black border-2  rounded-3xl h-fit ">
+        <div className="bg-white m-2 mr-96 px-1.5 py-1 border-black border-2  rounded-3xl h-fit ">
           <input type="text" placeholder="Search Order By Id" className="ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
         </div>
 
