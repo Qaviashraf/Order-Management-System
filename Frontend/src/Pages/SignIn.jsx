@@ -76,6 +76,8 @@ export const SignIn = () => {
                         placeholder='Enter your last name'
                         value={lastName}
                         onChange={e => setLastName(e.target.value)} />
+                    <input className=" w-1/2 p-2 border rounded-3xl " type="text" placeholder='Enter your first name' />
+                    <input className=" w-1/2 p-2 border rounded-3xl" type="text" placeholder='Enter your last name' />
                 </div>
                 <div className="mb-4">
                     <label className="flex justify-start  text-sm font-medium mb-1 ml-6">Email</label>
@@ -97,6 +99,7 @@ export const SignIn = () => {
                             placeholder='Enter your password'
                             value={password}
                             onChange={e => setPassword(e.target.value)} />
+                        <input className="w-full p-2  rounded-3xl" type="password" placeholder='Enter your password' />
                     </div>
                 </div>
                 {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
