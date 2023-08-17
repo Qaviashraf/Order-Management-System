@@ -8,7 +8,7 @@ import { BiSolidLock } from 'react-icons/Bi'
 
 
 
-export const SignIn = () => {
+export const Signup = () => {
 
     const navigate = useNavigate();
 
@@ -16,14 +16,25 @@ export const SignIn = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSignIn = () => {
+    const handleSignup = () => {
+
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            setErrorMessage('Please fill in all fields.');
+        }
+
         // Check if the email is already registered
         const isEmailRegistered = ExampleData.some(user => user.email === email);
-
         if (isEmailRegistered) {
             setErrorMessage('Email is already registered.');
+            return;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match.');
             return;
         }
 
@@ -76,8 +87,6 @@ export const SignIn = () => {
                         placeholder='Enter your last name'
                         value={lastName}
                         onChange={e => setLastName(e.target.value)} />
-                    <input className=" w-1/2 p-2 border rounded-3xl " type="text" placeholder='Enter your first name' />
-                    <input className=" w-1/2 p-2 border rounded-3xl" type="text" placeholder='Enter your last name' />
                 </div>
                 <div className="mb-4">
                     <label className="flex justify-start  text-sm font-medium mb-1 ml-6">Email</label>
@@ -99,13 +108,22 @@ export const SignIn = () => {
                             placeholder='Enter your password'
                             value={password}
                             onChange={e => setPassword(e.target.value)} />
-                        <input className="w-full p-2  rounded-3xl" type="password" placeholder='Enter your password' />
+                    </div>
+                    <div className="flex justify-center items-center mt-4">
+                        <BiSolidLock className="mr-2 text-xl" />
+                        <input
+                            className="w-full p-2 rounded-3xl"
+                            type="password"
+                            placeholder="Confirm your password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
                     </div>
                 </div>
                 {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
 
                 <button className="my-4 mx-32 py-2 px-6 bg-blue-400 text-white text-xl font-bold  rounded-3xl hover:bg-blue-600"
-                    onClick={handleSignIn}>
+                    onClick={handleSignup}>
                     Sign In
                 </button>
             </div>

@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 // PAGES
 import {Login} from './Pages/Login'
-import {SignIn} from './Pages/SignIn'
+import {Signup} from './Pages/Signup'
 import {Dashboard} from './Pages/Dashboard'
 import {Orders} from './Pages/Orders'
 import {Customers} from './Pages/Customers'
@@ -21,7 +21,7 @@ function App() {
 
   
   const location = useLocation();
-  const hideSidebar = location.pathname === '/' || location.pathname === '/SignIn';
+  const hideSidebar = location.pathname === '/' || location.pathname === '/Signup';
   
   
   
@@ -37,7 +37,7 @@ function App() {
         <Route path="/Customers" element={ <Customers/> } />
         <Route path="/Setting" element={ <Setting/> } />
         <Route path="/" element={ <Login/> } />
-        <Route path="/SignIn" element={ <SignIn/> } />
+        <Route path="/Signup" element={ <Signup/> } />
         <Route path="/AddOrders" element={ <AddOrders/> }/>
         <Route path="/Notifications" element={ <Notifications /> }/>
 

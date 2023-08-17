@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // ICONS
 import { CiUser } from 'react-icons/Ci'
@@ -55,11 +56,18 @@ export const Login = () => {
                         />
                     </div>
                     {loginError && <span className='m-4 ml-8 text-xs text-red-700'>Please Enter correct email and password</span>}
+                    <div className='flex justify-start'>
+                        <span className='m-2 ml-8 text-sm font-semibold '>Donot have an account ?
+                            <Link className='text-blue-700'
+                                to="/Signup">
+                                Signup
+                            </Link>
+                        </span>
+                    </div>
                 </div>
                 <button
                     className="my-2 mx-36 py-2 px-6 bg-blue-400 text-white text-xl font-bold rounded-3xl hover:bg-blue-600"
-                    onClick={handleLogin}
-                >
+                    onClick={handleLogin}>
                     Login
                 </button>
             </div>
