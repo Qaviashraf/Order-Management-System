@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 // import './PswdModal.css'
 import { ImCancelCircle } from 'react-icons/im'
-
+import { useNavigate } from 'react-router-dom'
 export const LogoutModal=({closeModal}) =>{
-
+    const navigate = useNavigate();
     useEffect(() => {
         document.body.style.overflowY = 'hidden';
         return() => {
         document.body.style.overflowY = 'scroll';    
         }
     },[])
+    const returnlogin = () => {
+        navigate('/')
+      }
 
     // const onChange = (e) => {
     //     const { name, value } = e.target;
@@ -33,7 +36,7 @@ return (
             <p> Are You Want to Logout</p>
         
         <div className='m-5 flex justify-around'>
-        <button className='mr-5 w-20 bg-black text-white p-1 px-2 rounded font-bold hover:opacity-20'>Yes</button>
+        <button className='mr-5 w-20 bg-black text-white p-1 px-2 rounded font-bold hover:opacity-20' onClick={returnlogin}>Yes</button>
         <button onClick={closeModal} className=' bg-black text-white p-1 px-2 rounded font-bold hover:opacity-20'>Cancel</button>
         </div>
         </div>

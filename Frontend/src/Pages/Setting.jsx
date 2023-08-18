@@ -33,12 +33,12 @@ export const Setting = () => {
     settheme(theme === "dark" ? "light" : "dark");
   };
   return (
-    <div className=" dark:bg-black  m-2 border-black border-2 rounded-2xl w-4/5  shadow-xl shadow-black">
+    <div className=" dark:bg-slate-700  m-2 border-black border-2 rounded-2xl w-4/5  shadow-xl shadow-black">
       <div className="m-8">
         <div className=" dark:text-white flex justify-between mb-2 font-bold">
-          <h1 className="text-5xl ">Setting</h1>
+          <h1 className=" text-5xl ">Setting</h1>
           <input
-            className=" dark:text-black h-8 bg-slate-200 py-3 pl-5 mr-40 mt-5 focus:bg-white
+            className=" dark:text-black h-8 bg-slate-200 py-3 pl-5 mr-40 mt-5 focus:bg-white 
            border-black border-2 rounded-2xl"
             type="text"
             placeholder="search"

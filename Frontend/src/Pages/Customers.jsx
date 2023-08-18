@@ -10,13 +10,14 @@ export const Customers = ( ) => {
     const [findOrders, setFindOrders] = useState([]);
     const navigate = useNavigate();
   const id = localStorage.getItem('id');
-  const findid = ExampleData.findIndex((item)=>item.id===id)
+  const user = ExampleData.find(userData => userData.id === id);
+  const extractedOrders = user.orders
     const getData = () => {
       try{
-        const res = { data: ExampleData }
+        const res = {data : ExampleData}
         if(res.data.length > 0){
             
-          const extractedOrders = res.data.map((item) => item.orders[0]);
+          // const extractedOrders = res.map((item) => item.orders);
           const pendingorders = extractedOrders.filter((item) => item.status.toLowerCase() ==="pending")
           setOrders(pendingorders);
           setFindOrders(pendingorders)
@@ -43,12 +44,12 @@ export const Customers = ( ) => {
     }
      
     return(
-        <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
+        <div className='dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
       <div className="flex justify-between">
 
-      <div className="m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
-                <input type="text" placeholder="Enter Customer name" className="ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
-                <button className="my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
+      <div className="dark:border-white m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
+                <input type="text" placeholder="Enter Customer name" className="dark:bg-slate-700 dark:text-white ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
+                <button className="dark:border-black my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
               </div>
 
         <div className="w-fit h-fit m-3 ml-96 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black">
@@ -57,9 +58,9 @@ export const Customers = ( ) => {
       </div>
 
       <div>
-          <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-7xl'>
+          <table className=' dark:border-white my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-7xl'>
               <thead className='text-lg bg-purple-800 text-white'>
-                <tr>
+                <tr >
               <th>Order Id</th>
               <th>Customer Name</th>
               <th>Mobile Number</th>

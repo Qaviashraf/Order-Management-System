@@ -39,12 +39,12 @@ export const Orders = () => {
   }
 
   return (
-    <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black'>
+    <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
       <div className="flex justify-between">
 
-      <div className="m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
-                <input type="text" placeholder="Search By ID" className="ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
-                <button className="my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
+      <div className="m-2 dark:border-white px-0.5  border-black border-2  rounded-3xl h-fit ">
+                <input type="text" placeholder="Search By ID" className="dark:bg-slate-700  ml-1 pl-2 h-7  outline-none" onChange={Filter}/>
+                <button className="dark:border-black my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
               </div>
 
         <div className="w-fit h-fit m-3 ml-96 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black">
@@ -54,7 +54,7 @@ export const Orders = () => {
 
       <div>
           <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-7xl'>
-              <thead className='text-lg bg-purple-800 text-white'>
+              <thead className=' text-lg bg-purple-800 text-white'>
                 <tr>
               <th>Order Id</th>
               <th>Customer Name</th>

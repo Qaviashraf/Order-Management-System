@@ -56,7 +56,7 @@ function OrderData({ Order, setOrders }) {
           const { order_id, customer_name, mobile_number, email, address, product, status, deliveryDate } = order;
 
           return (
-            <tr key={index}>
+            <tr className='dark:text-white  ' key={index}>
               <td>{order_id}</td>
               <td>{customer_name}</td>
               <td>{mobile_number}</td>
