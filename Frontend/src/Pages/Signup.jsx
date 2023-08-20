@@ -1,6 +1,8 @@
 import { ExampleData } from '../ExampleData';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+
 // ICONS
 import { CiUser } from 'react-icons/Ci'
 import { MdEmail } from 'react-icons/Md'
@@ -23,14 +25,15 @@ export const Signup = () => {
 
         if (!firstName || !lastName || !email || !password || !confirmPassword) {
             setErrorMessage('Please fill in all fields.');
+            return;
         }
 
         // Check if the email is already registered
-        const isEmailRegistered = ExampleData.some(user => user.email === email);
-        if (isEmailRegistered) {
-            setErrorMessage('Email is already registered.');
-            return;
-        }
+        // const isEmailRegistered = ExampleData.some(user => user.email === email);
+        // if (isEmailRegistered) {
+        //     setErrorMessage('Email is already registered.');
+        //     return;
+        // }
 
         // Check if passwords match
         if (password !== confirmPassword) {
@@ -41,28 +44,23 @@ export const Signup = () => {
         // Generate a new user ID based on the length of ExampleData array
         const newUserId = (ExampleData.length + 1).toString();
 
-        // Create a new user object
-        const newUser = {
-            id: newUserId,
-            firstname: firstName,
-            lastname: lastName,
-            email: email,
-            password: password,
-            orders: []
-        };
-        console.log(newUser)
+
+        axios.post('http://localhost:3001/user',{firstName,lastName,email,password})
+        .then(result => console.log(result))
+        .catch(err => console.log(err))
+        // console.log(newUser)
         // Push the new user into the ExampleData array
-        ExampleData.push(newUser);
+        // ExampleData.push(newUser);
 
 
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setPassword('');
-        setErrorMessage('');
+        // setFirstName('');
+        // setLastName('');
+        // setEmail('');
+        // setPassword('');
+        // setErrorMessage('');
 
         alert('Sign up successful!');
-        navigate(`/`);
+        // navigate(`/`);
 
     };
 
