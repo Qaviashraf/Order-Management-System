@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react'
 // import './PswdModal.css'
 import { ImCancelCircle } from 'react-icons/im'
+import ResetModal from './ResetModal';
 
 export const PasswordModal=({closeModal}) =>{
+    const [show, setshow] = useState(false);
+  const close = () => {
+    setshow(false);
+  };
+  const handleClick = () => {
+    setshow(true);
+  };
 
     useEffect(() => {
         document.body.style.overflowY = 'hidden';
@@ -35,8 +43,9 @@ return (
             
         </div>
         <div className='m-1 flex justify-center'>
-        <button className='bg-black text-white p-1 px-2 rounded font-bold hover:opacity-20'>Proceed</button>
+        <button onClick={handleClick} className='bg-black text-white p-1 px-2 rounded font-bold hover:opacity-20'>Proceed</button>
         </div>
+        <div>{show && <ResetModal closeModal={close} />}</div>
     </div>
     </div>
     </>

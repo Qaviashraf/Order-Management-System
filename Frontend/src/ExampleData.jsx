@@ -127,7 +127,7 @@ export const ExampleData = [
                 order_id:"0001",
                 customer_name:"Qavi",
                 mobile_number:"2819489412",
-                email:"qavi@gmail.com",
+                email:"usman@gmail.com",
                 address:"Nagin",
                 category:"Bike",
                 product:"Super Power Bike",

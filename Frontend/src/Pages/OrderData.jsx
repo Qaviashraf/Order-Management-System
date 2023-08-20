@@ -105,7 +105,7 @@ function OrderData({ Order, setOrders }) {
             <div>
               {pageIndex.slice(Math.max(0, currentPage - 3), Math.min(numberOfPages, currentPage + numberOfPages))
                 .map(page =>
-                  <button onClick={() => handlePageChange(page - 1)} key={page} className='border border-black text-xs p-2 mx-1 hover:bg-black hover:text-white'>{page}</button>
+                  <button onClick={() => handlePageChange(page - 1)} key={page} className='dark:text-white border border-black text-xs p-2 mx-1 hover:bg-black hover:text-white'>{page}</button>
                 )}
             </div>
 
