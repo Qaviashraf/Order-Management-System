@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
 
-const orderSchema = new mongoose.Schema({
-    order_id: String,
-    customer_name: String,
-    mobile_number: String,
-    email: String,
-    address: String,
-    category: String,
-    product: String,
-    status: String,
-    deliveryDate: Date,
-});
+// const orderSchema = new mongoose.Schema({
+//     order_id: String,
+//     customer_name: String,
+//     mobile_number: String,
+//     email: String,
+//     address: String,
+//     category: String,
+//     product: String,
+//     status: String,
+//     deliveryDate: Date,
+// });
 
 const userSchema = new mongoose.Schema({
     // id: String,
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     lastname: String,
     email: String,
     password: String,
-    orders: [orderSchema],
+    orders: [],
 },
 {
     versionKey: false
