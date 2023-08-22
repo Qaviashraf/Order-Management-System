@@ -4,6 +4,7 @@ import './Order.css'
 import { ExampleData } from '../ExampleData'
 import { useNavigate } from 'react-router-dom'
 import './EditModal.css'
+import axios from 'axios'
 
 export const Orders = () => {
 
@@ -11,22 +12,25 @@ export const Orders = () => {
   const [findOrders, setFindOrders] = useState([]);
   const navigate = useNavigate();
 
-  const getData = () => {
+  // Get DATA From API AND STORE INTO STATE
+  const getData = async () => {
     try {
-      const res = { data: ExampleData }
-      if (res.data.length > 0) {
-        const extractedOrders = res.data.map((item) => item.orders[0]);
+      const res = await axios.get('http://localhost:3001/createorder');
+    
+      if(res.data){
+        const extractedOrders = res.data;
         setOrders(extractedOrders);
-        setFindOrders(extractedOrders)
+        setFindOrders(extractedOrders);
       }
     } catch (e) {
-      console.log(e);
+      console.log("Error:", e);
     }
-  }
-
+  };
+  
   useEffect(() => {
     getData();
   }, []);
+
 
   const CrOrderPage = () => {
     navigate('/AddOrders')
@@ -36,12 +40,12 @@ export const Orders = () => {
     setFindOrders(orders.filter((item) => item.order_id.includes(e.target.value)));
   }
 
+  // set the length of order state which is used for Auto Generate Id from Adddata page
   useEffect(() => {
     const lengths = orders;
-    if(lengths){
     localStorage.setItem('orderlength', lengths.length);
-    }
   }, [orders])
+
 
   return (
     <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
@@ -49,7 +53,7 @@ export const Orders = () => {
 
         <div className="m-2 dark:border-white px-0.5  border-black border-2  rounded-3xl h-fit ">
           <input type="text" placeholder="Search By ID" className="dark:bg-slate-700  ml-1 pl-2 h-7  outline-none" onChange={Filter} />
-          <button className="dark:border-black my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black ">Search</button>
+          <button className="dark:border-black my-0.5 p-2 px-6  text-white cursor-pointer bg-gray-800 rounded-3xl border-2 hover:bg-gray-700  hover:border-black">Search</button>
         </div>
 
         <div className="w-fit h-fit m-3 ml-96 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black">

@@ -19,6 +19,7 @@ mongoose.connect('mongodb+srv://qaviashraf:12345678Admin@nodeapi.iymng6r.mongodb
         console.log("error")
 })
 
+//Getting Order from mongodb API
 app.get('/createorder', async (req, res) => {
     try {
         const user = await Order.find({});
@@ -29,16 +30,18 @@ app.get('/createorder', async (req, res) => {
     }
 })
 
-app.get('/user', async (req, res) => {
-    try {
-        const getUser = await User.find({});
-        res.status(201).send(getUser);
-    } catch (e) {
-        res.status(404).send(e);
-    }
-})
+
+// app.get('/user', async (req, res) => {
+//     try {
+//         const getUser = await User.find({});
+//         res.status(201).send(getUser);
+//     } catch (e) {
+//         res.status(404).send(e);
+//     }
+// })
 
 
+// Post User into MongoDB API
 app.post('/user', async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body;
@@ -56,6 +59,7 @@ app.post('/user', async (req, res) => {
     }
 })
 
+
 //Order Post request
 app.post('/createorder', async (req, res) => {
     try{
@@ -67,16 +71,21 @@ app.post('/createorder', async (req, res) => {
     }
 })
 
-// Delete Request 
-// app.delete('/createorder/:order_id', async (req, res) => {
-//     try {
-//         const OrderId = parseInt(req.params.order_id);
-//         const getOrder = await Order.findOneAndDelete({order_id: OrderId });
-//         res.send(getOrder);
-//     } catch (e) {
-//         res.status(500).send(e);
-//     }
-// })
+
+// Delete Request Delete Order 
+app.post('/deleteorder', async (req, res) => {
+  try {
+    const orderId = req.body.order_id;
+    const deletedOrder = await Order.findOneAndDelete({ order_id: orderId }, {new: true});
+    if (deletedOrder) {
+      res.status(200).send('Order deleted successfully');
+    } else {
+      res.status(404).send('Order not found');
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
 
 
 

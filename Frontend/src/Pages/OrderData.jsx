@@ -3,10 +3,11 @@ import "./Order.css"
 import { AiFillEdit, AiFillDelete } from "react-icons/Ai"
 import EditModal from './EditModal'
 import DeleteModal from './DeleteModal';
+import axios from 'axios'
 
 function OrderData({ Order, setOrders }) {
 
-  const [sendId, setSendid] = useState(0)
+  const [sendData, setSenddata] = useState()
   //pagination
   const itemPerPage = 8;
   const numberOfPages = Math.ceil(Order.length / itemPerPage);
@@ -24,12 +25,15 @@ function OrderData({ Order, setOrders }) {
   const closedelModal = () => { setdelModal(false) }
 
   // Delete
-  const handleDelete = (id) => {
-    const toBeDeletedIndex = Order.findIndex((item) => item.order_id === id)
-    Order.splice(toBeDeletedIndex, 1)
-    setOrders([...Order])
-    setdelModal(false)
-    setSendid(0);
+  const handleDelete = async (order) => {
+    try {
+      const response = await axios.post('http://localhost:3001/deleteorder', { order_id: order.order_id });
+      setdelModal(false);
+      setSenddata('');
+      setOrders(prevOrders => prevOrders.filter(PrevOrder => PrevOrder.order_id !== order.order_id));
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   //Modal dialog Box
@@ -39,9 +43,10 @@ function OrderData({ Order, setOrders }) {
   }
 
 
-  const deleteModal = (id) => {
+  const deleteModal = (order) => {
     setdelModal(true)
-    setSendid(id)
+    // setSendid(id)
+    setSenddata(order)
   }
 
   //Pagination
@@ -53,7 +58,8 @@ function OrderData({ Order, setOrders }) {
     <>
       {
         row.map((order, index) => {
-          const { order_id, customer_name, mobile_number, email, address, product, status, deliveryDate } = order;
+          const { order_id, customer_name, mobile_number, email, address, product, status, delivery_date
+          } = order;
 
           return (
             <tr className='dark:text-white  ' key={index}>
@@ -64,7 +70,7 @@ function OrderData({ Order, setOrders }) {
               <td>{address}</td>
               <td>{product}</td>
               <td><p className={status === 'Delivered' ? 'deliver' : 'pending'}>{status}</p></td>
-              <td>{deliveryDate}</td>
+              <td>{(delivery_date).toString().split('T')[0]}</td>
 
               <td>
                 <button onClick={() =>
@@ -74,8 +80,8 @@ function OrderData({ Order, setOrders }) {
               </td>
 
               <td onClick={() => {
-                //  deleteOrder(order_id)
-                deleteModal(order_id)
+                  // deleteModal(order_id)
+                  deleteModal(order)
               }}>
                 <button className='hover:text-gray-400 text-2xl'><AiFillDelete /></button>
               </td>
@@ -92,7 +98,7 @@ function OrderData({ Order, setOrders }) {
 
       <tr>
         <td colSpan={10} className='border-none'>
-          {delmodal && <DeleteModal closedelModal={closedelModal} propsId={sendId} onDelete={handleDelete} />}
+          {delmodal && <DeleteModal closedelModal={closedelModal} propsOrder={sendData} onDelete={handleDelete} />}
         </td>
       </tr>
 

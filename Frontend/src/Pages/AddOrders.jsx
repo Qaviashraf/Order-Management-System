@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 export const AddOrders = () => {
 
@@ -14,6 +15,8 @@ export const AddOrders = () => {
     delivery_date: ''
   });
 
+  const navigate = useNavigate();
+
   const onchange = (e) => {
     const { name, value } = e.target;
     setCreateData(prevState => ({
@@ -23,13 +26,11 @@ export const AddOrders = () => {
   }
 
   useEffect(() => {
-    const num = parseInt(localStorage.getItem('orderlength'));
-    if (num) {
+    let num = +(localStorage.getItem('orderlength'))
       setCreateData(prevState => ({
         ...prevState,
         order_id: num + 1,
       }))
-    }
   }, [])
 
   const submit = async (e) => {
@@ -52,6 +53,7 @@ export const AddOrders = () => {
       })
       if (res.status === 201) {
         alert("Successfully registered");
+        navigate('/orders');
       }
       else {
         alert("Error")
