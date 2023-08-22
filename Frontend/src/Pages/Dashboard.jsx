@@ -1,33 +1,70 @@
-import { ExampleData } from '../ExampleData'
 import { Link } from "react-router-dom";
-import { BsBell } from 'react-icons/Bs'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+// COMPONENTS
 import { LineGraph } from '../components/LineGraph'
 import { PieGraph } from '../components/PieGraph'
-import { useNavigate } from 'react-router-dom';
 
+// ICONS
+import { BsBell } from 'react-icons/Bs'
 
 export const Dashboard = () => {
 
-    const id = localStorage.getItem('id');
-    const user = ExampleData.find(userData => userData.id === id);
-    const allOrders = user.orders;
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const id = localStorage.getItem('id');
+
+        axios.get(`http://localhost:3001/user/${id}`)
+            .then(response => {
+                setUser(response.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false);
+            });
+    }, []);
+
+    const handleClick = () => {
+        if (user) {
+            navigate('/Notifications', { state: { todaysOrders: getTodaysOrders() } });
+        }
+    };
+
+    const getTodaysOrders = () => {
+        if (user) {
+            const todayUTC = new Date().toISOString().split('T')[0];
+            const status = 'Pending';
+            return user.orders.filter(order => {
+                const orderDateUTC = new Date(order.deliveryDate).toISOString().split('T')[0];
+                return orderDateUTC === todayUTC && order.status === status;
+            });
+        }
+        return [];
+    };
+
+    if (loading) {
+        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
+        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+        <p >Loading...</p>
+        </div>
+        
+    }
+
+    if (!user) {
+        return <p>User data not found.</p>;
+    }
+
+    const allOrders = user.orders;
     const totalOrders = allOrders.length;
     const pendingOrders = allOrders.filter(order => order.status === 'Pending').length;
     const deliveredOrders = allOrders.filter(order => order.status === 'Delivered').length;
-
-
-    const getTodaysOrders = () => {
-        const today = new Date().toISOString().split('T')[0];
-        const status = "Pending";
-        return allOrders.filter(order => order.deliveryDate === today && order.status === status);
-    };
     const todaysOrders = getTodaysOrders();
-
-    const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/Notifications', { state: { todaysOrders } });
-    };
 
     return (
 
@@ -66,8 +103,8 @@ export const Dashboard = () => {
             </div>
 
             <div className='flex'>
-                <LineGraph />
-                <PieGraph />
+                <LineGraph user={user} />
+                <PieGraph user={user} />
             </div>
         </div>
     )

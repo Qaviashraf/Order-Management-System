@@ -4,10 +4,7 @@ import { Line } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-export const LineGraph = () => {
-
-    const id = localStorage.getItem('id');
-    const user = ExampleData.find(userData => userData.id === id);
+export const LineGraph = ({user}) => {
 
     //Sorting Orders months
     const monthNames = [

@@ -1,23 +1,53 @@
-import { ExampleData } from '../ExampleData'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 // ICON
 import { MdDeleteOutline } from 'react-icons/Md'
 
 
 export const Notifications = () => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [notifications, setNotifications] = useState([]);
 
-    const id = localStorage.getItem('id');
-    const user = ExampleData.find(userData => userData.id === id);
-    const allOrders = user.orders;
-    const today = new Date().toISOString().split('T')[0];
-    const status = "Pending";
-    const todaysOrders = allOrders.filter(order => order.deliveryDate === today && order.status === status);
+    useEffect(() => {
+        const id = localStorage.getItem('id');
 
-    const [notifications, setNotifications] = useState(todaysOrders);
+        // Fetch user data using id from the backend
+        axios.get(`http://localhost:3001/user/${id}`)
+            .then(response => {
+                setUser(response.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (user) {
+            const todayUTC = new Date().toISOString().split('T')[0]; // Get today's date in UTC
+            const status = 'Pending';
+            const todaysOrders = user.orders.filter(order => {
+                const orderDateUTC = new Date(order.deliveryDate).toISOString().split('T')[0];
+                return orderDateUTC === todayUTC && order.status === status;
+            });
+            setNotifications(todaysOrders);
+        }
+    }, [user]);
+
     const handleDelete = (orderId) => {
         const updatedNotifications = notifications.filter(order => order.order_id !== orderId);
         setNotifications(updatedNotifications);
     };
+
+    if (loading) {
+        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
+        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+        <p >Loading...</p>
+        </div>
+    }
+
 
 
 
