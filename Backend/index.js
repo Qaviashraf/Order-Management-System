@@ -30,18 +30,16 @@ app.get('/createorder', async (req, res) => {
     }
 })
 
+app.get('/user', async (req, res) => {
+    try {
+        const getUser = await User.find({});
+        res.status(201).send(getUser);
+    } catch (e) {
+        res.status(404).send(e);
+    }
+})
 
-// app.get('/user', async (req, res) => {
-//     try {
-//         const getUser = await User.find({});
-//         res.status(201).send(getUser);
-//     } catch (e) {
-//         res.status(404).send(e);
-//     }
-// })
 
-
-// Post User into MongoDB API
 app.post('/user', async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body;
@@ -58,7 +56,6 @@ app.post('/user', async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 })
-
 
 //Order Post request
 app.post('/createorder', async (req, res) => {

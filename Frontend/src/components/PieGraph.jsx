@@ -4,11 +4,7 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 
-export const PieGraph = () => {
-
-  const id = localStorage.getItem('id');
-  const user = ExampleData.find(userData => userData.id === id);
-
+export const PieGraph = ({user}) => {
 
   const orders = user.orders;
   const categorydata = [];

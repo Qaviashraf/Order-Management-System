@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 // ICONS
 import { CiUser } from 'react-icons/Ci'
 import { MdEmail } from 'react-icons/Md'
 import { BiSolidLock } from 'react-icons/Bi'
-import { ExampleData } from '../ExampleData'
+
 
 export const Login = () => {
 
-    const navigate = useNavigate(); // Create a history object
+    const navigate = useNavigate();
     const [loginError, setLoginError] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // ... your login logic ...
-        const user = ExampleData.find(userData => userData.email === email);
-        if (user && user.password === password) {
-            localStorage.setItem('id', user.id); // Store user.id in localStorage
-            navigate(`/Dashboard`);
-        } else {
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('http://localhost:3001/login', { email, password });
+            console.log("hello")
+            if (response.data.status === "Success") {
+                const userId = response.data.userId;
+                localStorage.setItem('id', userId);
+                navigate('/Dashboard');
+            } else {
+                setLoginError(true);
+            }
+        } catch (error) {
+            console.error(error);
             setLoginError(true);
         }
     };
-
     return (
         <div className="flex justify-around items-center mt-10 min-w-full min-h-full">
             <div className=" w-full max-w-md p-6 bg-gray bg-slate-200 rounded-lg shadow-lg shadow-black">

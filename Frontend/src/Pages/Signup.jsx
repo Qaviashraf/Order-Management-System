@@ -12,6 +12,7 @@ import { BiSolidLock } from 'react-icons/Bi'
 
 export const Signup = () => {
 
+
     const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -21,48 +22,48 @@ export const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSignup = () => {
-
-        if (!firstName || !lastName || !email || !password || !confirmPassword) {
-            setErrorMessage('Please fill in all fields.');
-            return;
-        }
-
-        // Check if the email is already registered
-        // const isEmailRegistered = ExampleData.some(user => user.email === email);
-        // if (isEmailRegistered) {
-        //     setErrorMessage('Email is already registered.');
-        //     return;
-        // }
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            setErrorMessage('Passwords do not match.');
-            return;
-        }
-
-        // Generate a new user ID based on the length of ExampleData array
-        const newUserId = (ExampleData.length + 1).toString();
-
-
-        axios.post('http://localhost:3001/user',{firstName,lastName,email,password})
-        .then(result => console.log(result))
-        .catch(err => console.log(err))
-        // console.log(newUser)
-        // Push the new user into the ExampleData array
-        // ExampleData.push(newUser);
-
-
-        // setFirstName('');
-        // setLastName('');
-        // setEmail('');
-        // setPassword('');
-        // setErrorMessage('');
-
-        alert('Sign up successful!');
-        // navigate(`/`);
-
-    };
+        const handleSignup = async () => {
+            if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                setErrorMessage('Please fill in all fields.');
+                return;
+            }
+        
+            if (password !== confirmPassword) {
+                setErrorMessage('Passwords do not match.');
+                return;
+            }
+        
+            try {
+                const response = await axios.post('http://localhost:3001/user/check-email', { email });
+        
+                if (response.data.exists) {
+                    setErrorMessage('Email is already registered.');
+                } else {
+                    // If email is not registered, proceed with signup
+                    const newUser = {
+                        firstName,
+                        lastName,
+                        email,
+                        password
+                    };
+        
+                    // Make API call to create the user
+                    await axios.post('http://localhost:3001/user', newUser);
+        
+                    setFirstName('');
+                    setLastName('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                    setErrorMessage('');
+        
+                    alert('Sign up successful!');
+                    navigate('/');
+                }
+            } catch (error) {
+                console.error('Error checking email:', error);
+            }
+        };
 
     return (
 
