@@ -38,10 +38,10 @@ export const Dashboard = () => {
 
     const getTodaysOrders = () => {
         if (user) {
-            const todayUTC = new Date().toISOString().split('T')[0];
+            const todayUTC = new Date().toString().split('T')[0];
             const status = 'Pending';
             return user.orders.filter(order => {
-                const orderDateUTC = new Date(order.deliveryDate).toISOString().split('T')[0];
+                const orderDateUTC = new Date(order.deliveryDate).toString().split('T')[0];
                 return orderDateUTC === todayUTC && order.status === status;
             });
         }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import OrderData from './OrderData'
 import './Order.css'
-import { ExampleData } from '../ExampleData'
 import { useNavigate } from 'react-router-dom'
 import './EditModal.css'
 import axios from 'axios'
@@ -15,10 +14,11 @@ export const Orders = () => {
   // Get DATA From API AND STORE INTO STATE
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/createorder');
-    
-      if(res.data){
-        const extractedOrders = res.data;
+      const id = localStorage.getItem('id');
+      const resp = await axios.get(`http://localhost:3001/user/${id}`);
+      console.log(resp.data.orders);
+      if(resp.data.orders){
+        const extractedOrders = resp.data.orders;
         setOrders(extractedOrders);
         setFindOrders(extractedOrders);
       }
@@ -26,7 +26,6 @@ export const Orders = () => {
       console.log("Error:", e);
     }
   };
-  
   useEffect(() => {
     getData();
   }, []);
@@ -37,15 +36,8 @@ export const Orders = () => {
   }
 
   const Filter = (e) => {
-    setFindOrders(orders.filter((item) => item.order_id.includes(e.target.value)));
+    setFindOrders(orders.filter((item) => item.order_id.includes(e.target.value.toUpperCase())));
   }
-
-  // set the length of order state which is used for Auto Generate Id from Adddata page
-  useEffect(() => {
-    const lengths = orders;
-    localStorage.setItem('orderlength', lengths.length);
-  }, [orders])
-
 
   return (
     <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>

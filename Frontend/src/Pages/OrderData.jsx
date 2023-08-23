@@ -9,7 +9,7 @@ function OrderData({ Order, setOrders }) {
 
   const [sendData, setSenddata] = useState()
   //pagination
-  const itemPerPage = 8;
+  const itemPerPage = 9;
   const numberOfPages = Math.ceil(Order.length / itemPerPage);
   const pageIndex = Array.from({ length: numberOfPages }, (_, indx) => indx + 1)
   const [currentPage, setCurrentPage] = useState(0)
@@ -24,17 +24,17 @@ function OrderData({ Order, setOrders }) {
   const closeModal = () => { setShowModal(false) }
   const closedelModal = () => { setdelModal(false) }
 
-  // Delete
-  const handleDelete = async (order) => {
+  const handleDelete = async (orderId) => {
+    const userId = localStorage.getItem('id')
     try {
-      const response = await axios.post('http://localhost:3001/deleteorder', { order_id: order.order_id });
+      const res = await axios.delete(`http://localhost:3001/users/${userId}/orders/${orderId}`);
       setdelModal(false);
       setSenddata('');
-      setOrders(prevOrders => prevOrders.filter(PrevOrder => PrevOrder.order_id !== order.order_id));
-    } catch (e) {
-      console.error(e);
+      setOrders(prevOrders => prevOrders.filter(prevOrder => prevOrder.order_id !== orderId))
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   //Modal dialog Box
   const openEditmodel = (orderDetail) => {
@@ -45,7 +45,6 @@ function OrderData({ Order, setOrders }) {
 
   const deleteModal = (order) => {
     setdelModal(true)
-    // setSendid(id)
     setSenddata(order)
   }
 
@@ -53,6 +52,12 @@ function OrderData({ Order, setOrders }) {
   const handlePageChange = (PageNumber) => {
     setCurrentPage(PageNumber)
   }
+
+  const maxStringAddress = 23;
+  const maxStringEmail = 15;
+  const maxStringName = 15;
+  const maxStringProduct = 14;
+  const maxStringnum = 14;
 
   return (
     <>
@@ -62,15 +67,15 @@ function OrderData({ Order, setOrders }) {
           } = order;
 
           return (
-            <tr className='dark:text-white  ' key={index}>
-              <td>{order_id}</td>
-              <td>{customer_name}</td>
-              <td>{mobile_number}</td>
-              <td>{email}</td>
-              <td>{address}</td>
-              <td>{product}</td>
-              <td><p className={status === 'Delivered' ? 'deliver' : 'pending'}>{status}</p></td>
-              <td>{(delivery_date).toString().split('T')[0]}</td>
+            <tr className='dark:text-white ' key={index}>
+              <td className='cursor-pointer'>{order_id}</td>
+              <td className='cursor-pointer' title={customer_name}>{customer_name.length > maxStringName ? customer_name.substring(0, maxStringName) + '...' : customer_name}</td>
+              <td className='cursor-pointer' title={mobile_number}>{mobile_number.length > maxStringnum ? mobile_number.substring(0, maxStringnum) + '...' : mobile_number}</td>
+              <td className='cursor-pointer' title={email}>{email.length > maxStringEmail ? email.substring(0, maxStringEmail) + '...' : email}</td>
+              <td className='cursor-pointer' title={address}>{address.length > maxStringAddress ? address.substring(0, maxStringAddress) + '...' : address}</td>
+              <td className='cursor-pointer' title={product}>{product.length > maxStringProduct ? product.substring(0, maxStringProduct) + '...' : product}</td>
+              <td className='cursor-pointer' title={status}><p className={status === 'Delivered' ? 'deliver' : 'pending'}>{status}</p></td>
+              <td className='cursor-pointer'>{(delivery_date).toString().split('T')[0]}</td>
 
               <td>
                 <button onClick={() =>
@@ -81,7 +86,7 @@ function OrderData({ Order, setOrders }) {
 
               <td onClick={() => {
                   // deleteModal(order_id)
-                  deleteModal(order)
+                  deleteModal(order.order_id)
               }}>
                 <button className='hover:text-gray-400 text-2xl'><AiFillDelete /></button>
               </td>
@@ -104,7 +109,7 @@ function OrderData({ Order, setOrders }) {
 
       <tr>
         <td colSpan={10} className='border-none'>
-          <div className='mt-2 flex justify-end mt-[-40px]'>
+          <div className='mt-2 flex justify-end mt-[-25px] mr-16'>
 
             <button onClick={() => handlePageChange(currentPage - 1)} className='bg-black text-white mx-1 px-2 text-2xl hover:opacity-30' disabled={currentPage < 1}>&lt;</button>
 

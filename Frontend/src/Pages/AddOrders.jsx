@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 export const AddOrders = () => {
 
   const [createdata, setCreateData] = useState({
-    order_id: '', // Id Auto-generated
     customer_name: '',
     mobile_number: '',
     email: '',
@@ -25,24 +24,16 @@ export const AddOrders = () => {
     }));
   }
 
-  useEffect(() => {
-    let num = +(localStorage.getItem('orderlength'))
-      setCreateData(prevState => ({
-        ...prevState,
-        order_id: num + 1,
-      }))
-  }, [])
-
   const submit = async (e) => {
     e.preventDefault();
-    const { order_id, customer_name, mobile_number, email, address, product, status, delivery_date } = createdata;
+    const userId = localStorage.getItem('id');
+    const {customer_name, mobile_number, email, address, product, status, delivery_date } = createdata;
     try {
-      if (!order_id || !customer_name || !mobile_number || !email || !address || !product || !status || !delivery_date) {
+      if (!customer_name || !mobile_number || !email || !address || !product || !status || !delivery_date) {
         alert("All fields are required");
         return
       }
-      const res = await axios.post("http://localhost:3001/createorder", {
-        order_id,
+      const res = await axios.post(`http://localhost:3001/users/${userId}/orders`, {
         customer_name,
         mobile_number,
         email,
