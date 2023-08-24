@@ -42,6 +42,32 @@ function OrderData({ Order, setOrders }) {
     setShowModal(true)
   }
 
+  const fetchdata = async () => {
+    try {
+      const id = localStorage.getItem('id');
+      const resp = await axios.get(`http://localhost:3001/user/${id}`);
+      
+      if(resp.data.orders){
+        const extractedOrders = resp.data.orders;
+        setOrders(extractedOrders);
+      }
+    } catch (e) {
+      console.log("Error:", e);
+    }
+  };
+
+  const handleUpdate = async (order) => {
+    try{
+      const userId = localStorage.getItem('id');
+      const res = await axios.put(`http://localhost:3001/users/${userId}/orders/${order.order_id}`, order)
+      fetchdata();
+      closeModal();
+    }catch(e){
+      console.log(e);
+    }
+    // console.log(order.order_id);
+  }
+
 
   const deleteModal = (order) => {
     setdelModal(true)
@@ -97,7 +123,7 @@ function OrderData({ Order, setOrders }) {
       }
       <tr>
         <td className='border-none' colSpan={10}>
-          {showmodal && <EditModal closeModal={closeModal} edit={modaldata} />}
+          {showmodal && <EditModal closeModal={closeModal} edit={modaldata} handleUpdate={handleUpdate}/>}
         </td>
       </tr>
 

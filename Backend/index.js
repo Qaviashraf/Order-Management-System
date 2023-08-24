@@ -143,6 +143,36 @@ try {
 }
 });
 
+
+// Update the order
+app.put('/users/:userId/orders/:orderId', async (req, res)=> {
+      try{
+        const userId = req.params.userId;
+        const orderId = req.params.orderId;
+        const orderData = req.body;
+
+        // console.log(orderData);
+        const user = await User.findById(userId);
+        
+        if(!user){
+          return res.status(404).json({message: 'User not found'});
+        }
+
+        const orderToUpdate = user.orders.find(order => order.order_id.toString() === orderId)
+
+        if(!orderToUpdate) {
+          return res.status(404).json({message: 'Order not found'});
+        }
+        Object.assign(orderToUpdate, orderData)
+        await user.save();
+        res.status(200).json({ message: 'Order updated successfully', user });
+      }catch(e){
+        console.log(e);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+      }
+  })
+
+
 // Delete the order 
 // DELETE route to handle order deletion by order_id
 app.delete('/users/:userId/orders/:order_id', async (req, res) => {

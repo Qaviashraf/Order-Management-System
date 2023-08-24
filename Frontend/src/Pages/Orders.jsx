@@ -16,7 +16,7 @@ export const Orders = () => {
     try {
       const id = localStorage.getItem('id');
       const resp = await axios.get(`http://localhost:3001/user/${id}`);
-      console.log(resp.data.orders);
+      
       if(resp.data.orders){
         const extractedOrders = resp.data.orders;
         setOrders(extractedOrders);
