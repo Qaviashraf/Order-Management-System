@@ -9,7 +9,7 @@ export const PieGraph = ({ user }) => {
   const categorydata = [];
 
   for (const order of orders) {
-    const category = order.product;
+    const category = order.category;
     const existingCategory = categorydata.find(data => data.category === category);
 
     if (existingCategory) {
