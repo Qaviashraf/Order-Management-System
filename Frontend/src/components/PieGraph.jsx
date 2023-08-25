@@ -1,10 +1,9 @@
-import { ExampleData } from '../ExampleData'
 import { useState } from "react"
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
 
 
-export const PieGraph = ({user}) => {
+
+export const PieGraph = ({ user }) => {
 
   const orders = user.orders;
   const categorydata = [];

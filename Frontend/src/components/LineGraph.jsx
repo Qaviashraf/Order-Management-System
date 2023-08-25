@@ -1,10 +1,9 @@
-import { ExampleData } from '../ExampleData'
 import { useState } from "react"
 import { Line } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-export const LineGraph = ({user}) => {
+export const LineGraph = ({ user }) => {
 
     //Sorting Orders months
     const monthNames = [
@@ -12,7 +11,7 @@ export const LineGraph = ({user}) => {
         "July", "August", "September", "October", "November", "December"
     ];
     const months = user.orders.map(order => {
-        const date = new Date(order.deliveryDate);
+        const date = new Date(order.delivery_date);
         return date.getMonth();
     }).sort((a, b) => a - b) // Sort months in ascending order
         .map(month => monthNames[month]);

@@ -6,14 +6,14 @@ import { TbListDetails } from 'react-icons/Tb'
 import { PiUserFocusThin } from 'react-icons/Pi'
 import { AiFillSetting } from 'react-icons/Ai'
 import { BsBell } from 'react-icons/Bs'
-
+import { AiOutlineLogout } from 'react-icons/Ai'
 
 
 export const Sidebar = () => {
 
   return (
-    <div className="flex flex-col pb-80 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
-      <div className="mb-2">
+    <div className="flex flex-col pb-72 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
+      <div className="">
 
         <div className='flex justify-center'>
           <SiGoogletagmanager className='p-2 text-5xl' />
@@ -54,6 +54,13 @@ export const Sidebar = () => {
             <AiFillSetting className="m-2 mr-4 text-xl" />
             <div className="text-lg">
               Settings
+            </div>
+          </Link>
+
+          <Link to="/" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
+            <AiOutlineLogout className="m-2 mr-4 text-xl" />
+            <div className="text-lg">
+              Logout
             </div>
           </Link>
 

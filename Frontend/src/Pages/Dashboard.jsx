@@ -38,11 +38,11 @@ export const Dashboard = () => {
 
     const getTodaysOrders = () => {
         if (user) {
-            const todayUTC = new Date().toString().split('T')[0];
+            const today = new Date().toDateString();
             const status = 'Pending';
             return user.orders.filter(order => {
-                const orderDateUTC = new Date(order.deliveryDate).toString().split('T')[0];
-                return orderDateUTC === todayUTC && order.status === status;
+                const orderDate = new Date(order.delivery_date).toDateString();
+                return orderDate === today && order.status === status;
             });
         }
         return [];
@@ -50,10 +50,10 @@ export const Dashboard = () => {
 
     if (loading) {
         return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
-        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-        <p >Loading...</p>
+            <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+            <p >Loading...</p>
         </div>
-        
+
     }
 
     if (!user) {

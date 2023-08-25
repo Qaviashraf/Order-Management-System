@@ -3,17 +3,17 @@ import "./Order.css";
 // import { AiFillEdit, AiFillDelete } from "react-icons/Ai"
 // import EditModal from './EditModal'
 // import DeleteModal from './DeleteModal';
-export function CustomerData({ CstmrData, setCstmrData }) {
+export function CustomerData({ customers }) {
   // const [sendId, setSendid] = useState(0)
   //pagination
   const itemPerPage = 8;
-  const numberOfPages = Math.ceil(CstmrData.length / itemPerPage);
+  const numberOfPages = Math.ceil(customers.length / itemPerPage);
   const pageIndex = Array.from(
     { length: numberOfPages },
     (_, indx) => indx + 1
   );
   const [currentPage, setCurrentPage] = useState(0);
-  const row = CstmrData.slice(
+  const row = customers.slice(
     currentPage * itemPerPage,
     (currentPage + 1) * itemPerPage
   );
@@ -52,46 +52,33 @@ export function CustomerData({ CstmrData, setCstmrData }) {
     setCurrentPage(PageNumber);
   };
 
+  // return (
+  //   <>
+  //     {row.map((CstmrData, index) => {
+  //       const {
+  //         order_id,
+  //         customer_name,
+  //         mobile_number,
+  //         email,
+  //         address,
+  //         product,
+  //         status,
+  //         deliveryDate,
+  //       } = CstmrData;
+
   return (
     <>
-      {row.map((CstmrData, index) => {
-        const {
-          order_id,
-          customer_name,
-          mobile_number,
-          email,
-          address,
-          product,
-          status,
-          deliveryDate,
-        } = CstmrData;
+      {customers.map((customer, index) => (
+        <tr key={index}>
+          <td>{customer.name}</td>
+          <td>{customer.number}</td>
+          <td>{customer.email}</td>
+          <td>{customer.address}</td>
+          <td>{customer.orderCount}</td>
+        </tr>
+      ))}
 
-        return (
-          <tr className="dark:text-white  " key={index}>
-            <td>{customer_name}</td>
-            <td>{mobile_number}</td>
-            <td>{email}</td>
-            <td>{address}</td>
 
-            {/* <td><p className={status === 'Delivered' ? 'deliver' : 'pending'}>{status}</p></td>
-              <td>{deliveryDate}</td> */}
-
-            {/* <td>
-                <button onClick={() =>
-                  openEditmodel(order)
-                } className='hover:text-gray-400 text-2xl'><AiFillEdit />
-                </button>
-              </td>
-
-              <td onClick={() => {
-                //  deleteOrder(order_id)
-                deleteModal(order_id)
-              }}>
-                <button className='hover:text-gray-400 text-2xl'><AiFillDelete /></button>
-              </td> */}
-          </tr>
-        );
-      })}
       {/* <tr>
         <td className='border-none' colSpan={10}>
           {showmodal && <EditModal closeModal={closeModal} edit={modaldata} />}
@@ -102,8 +89,7 @@ export function CustomerData({ CstmrData, setCstmrData }) {
         <td colSpan={10} className='border-none'>
           {delmodal && <DeleteModal closedelModal={closedelModal} propsId={sendId} onDelete={handleDelete} />}
         </td>
-      </tr> */}
-
+      </tr> 
       <tr>
         <td colSpan={10} className="border-none">
           <div className="mt-2 flex justify-end ">
@@ -141,7 +127,7 @@ export function CustomerData({ CstmrData, setCstmrData }) {
             </button>
           </div>
         </td>
-      </tr>
+      </tr> */}
     </>
   );
 }

@@ -1,4 +1,3 @@
-import { ExampleData } from '../ExampleData';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -22,48 +21,48 @@ export const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-        const handleSignup = async () => {
-            if (!firstName || !lastName || !email || !password || !confirmPassword) {
-                setErrorMessage('Please fill in all fields.');
-                return;
+    const handleSignup = async () => {
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            setErrorMessage('Please fill in all fields.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match.');
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:3001/user/check-email', { email });
+
+            if (response.data.exists) {
+                setErrorMessage('Email is already registered.');
+            } else {
+                // If email is not registered, proceed with signup
+                const newUser = {
+                    firstName,
+                    lastName,
+                    email,
+                    password
+                };
+
+                // Make API call to create the user
+                await axios.post('http://localhost:3001/user', newUser);
+
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+                setConfirmPassword('');
+                setErrorMessage('');
+
+                alert('Sign up successful!');
+                navigate('/');
             }
-        
-            if (password !== confirmPassword) {
-                setErrorMessage('Passwords do not match.');
-                return;
-            }
-        
-            try {
-                const response = await axios.post('http://localhost:3001/user/check-email', { email });
-        
-                if (response.data.exists) {
-                    setErrorMessage('Email is already registered.');
-                } else {
-                    // If email is not registered, proceed with signup
-                    const newUser = {
-                        firstName,
-                        lastName,
-                        email,
-                        password
-                    };
-        
-                    // Make API call to create the user
-                    await axios.post('http://localhost:3001/user', newUser);
-        
-                    setFirstName('');
-                    setLastName('');
-                    setEmail('');
-                    setPassword('');
-                    setConfirmPassword('');
-                    setErrorMessage('');
-        
-                    alert('Sign up successful!');
-                    navigate('/');
-                }
-            } catch (error) {
-                console.error('Error checking email:', error);
-            }
-        };
+        } catch (error) {
+            console.error('Error checking email:', error);
+        }
+    };
 
     return (
 

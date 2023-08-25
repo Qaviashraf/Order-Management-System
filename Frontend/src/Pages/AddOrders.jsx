@@ -9,6 +9,7 @@ export const AddOrders = () => {
     mobile_number: '',
     email: '',
     address: '',
+    category: '',
     product: '',
     status: '',
     delivery_date: ''
@@ -27,9 +28,9 @@ export const AddOrders = () => {
   const submit = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem('id');
-    const {customer_name, mobile_number, email, address, product, status, delivery_date } = createdata;
+    const { customer_name, mobile_number, email, address, category, product, status, delivery_date } = createdata;
     try {
-      if (!customer_name || !mobile_number || !email || !address || !product || !status || !delivery_date) {
+      if (!customer_name || !mobile_number || !email || !address || !category || !product || !status || !delivery_date) {
         alert("All fields are required");
         return
       }
@@ -40,6 +41,7 @@ export const AddOrders = () => {
         address,
         status,
         delivery_date,
+        category,
         product
       })
       if (res.status === 201) {
@@ -59,9 +61,10 @@ export const AddOrders = () => {
 
     <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black w-full'>
       <div className='h-full flex justify-center'>
-        <div className='border-2 border-black my-auto rounded w-[50%] bg-black text-white'>
+        <div className='border-2 border-black mt-4 p-3 rounded-xl w-[50%] h-fit bg-gray-900 text-white'>
+          <h1 className='flex justify-center text-3xl font-semibold tracking-wide m-2'>Create Order</h1>
           <form action="">
-            <div className='mt-2'>
+            <div className=''>
               <label className='m-2 ml-8  font-bold '>Customer Name:</label>
               <input name='customer_name' onChange={onchange} className='pl-1 text-black border-2 border-black flex mx-auto m-2 w-[90%] rounded outline-none' type="text" />
             </div>
@@ -76,6 +79,10 @@ export const AddOrders = () => {
             <div>
               <label className='m-2 ml-8 font-bold '>Address:</label>
               <input name='address' onChange={onchange} className='pl-1 text-black border-2 border-black flex mx-auto m-2 w-[90%] rounded outline-none' type="text" />
+            </div>
+            <div>
+              <label className='m-2 ml-8 font-bold '>Category:</label>
+              <input name='category' onChange={onchange} className='pl-1 text-black border-2 border-black flex mx-auto m-2 w-[90%] rounded outline-none' type="text" />
             </div>
             <div>
               <label className='m-2 ml-8 font-bold '>Product:</label>
@@ -94,7 +101,7 @@ export const AddOrders = () => {
               <input name='delivery_date' onChange={onchange} className='pl-1 text-black border-2 border-black flex mx-auto m-2 w-[90%] rounded outline-none text-xl' type="date" />
             </div>
             <div className='flex justify-center'>
-              <button onClick={submit} className='flex justify-center m-3 bg-white text-black p-2 font-bold rounded-md hover:bg-black hover:text-white'>Create</button>
+              <button onClick={submit} className='flex justify-center  bg-white text-black p-2 px-4 font-bold rounded-3xl hover:bg-slate-700 hover:text-white'>Create</button>
             </div>
           </form>
         </div>
