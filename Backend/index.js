@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cors(
   {
-    origin: [""],
+    origin: ["https://order-management-system-zeta.vercel.app"],
     methods: ["Get", "Post"],
     credentials: true
   }
