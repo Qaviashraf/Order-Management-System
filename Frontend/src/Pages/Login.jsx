@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 
 // ICONS
-import { CiUser } from 'react-icons/Ci'
+import { BiUser } from 'react-icons/Bi'
 import { MdEmail } from 'react-icons/Md'
 import { BiSolidLock } from 'react-icons/Bi'
 
@@ -37,7 +37,7 @@ export const Login = () => {
         <div className="flex justify-around items-center mt-10 mb-32 min-w-full min-h-full">
             <div className=" w-full max-w-md p-6 bg-gray bg-slate-200 rounded-lg shadow-lg shadow-black">
 
-                <CiUser className="mx-32 my-4 p-2 text-9xl rounded-full border-2 border-black" />
+                <BiUser className="mx-32 my-4 p-2 text-9xl rounded-full border-2 border-black" />
                 <h1 className="flex justify-center text-3xl font-semibold mb-4 mr-4">Login</h1>
                 <div className="mb-4">
                     <label className="flex justify-start  text-sm font-medium mb-1 ml-6">Email</label>
