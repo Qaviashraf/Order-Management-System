@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-// import './PswdModal.css'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+// ICONS
 import { ImCancelCircle } from 'react-icons/im'
 import { CiUser } from 'react-icons/Ci'
 import { MdEmail } from 'react-icons/Md'
 import { BiSolidLock } from 'react-icons/Bi'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
-
-
 
 
 export const ResetModal = ({ closeModal, user }) => {
@@ -19,7 +17,7 @@ export const ResetModal = ({ closeModal, user }) => {
     const [password, setPassword] = useState(user.password);
     const [confirmPassword, setConfirmPassword] = useState('');
 
-   
+
     const handleproceed = async () => {
         if (!firstname || !lastname || !email || !password || !confirmPassword) {
             console.log('Please fill in all fields.');
@@ -30,7 +28,7 @@ export const ResetModal = ({ closeModal, user }) => {
             console.log('Passwords do not match.');
             return;
         }
-        
+
         try {
             const updatedUser = {
                 firstname,
@@ -38,25 +36,24 @@ export const ResetModal = ({ closeModal, user }) => {
                 email,
                 password
             };
-            
+
             const id = localStorage.getItem('id');
-            console.log(updatedUser);
-        
+
             const response = await axios.put(`http://localhost:3001/users/${id}`, updatedUser); // Use the correct route here
             console.log(response.data);
-        
+
             setFirstName('');
             setLastName('');
             setEmail('');
             setPassword('');
             setConfirmPassword('');
-        
+
             alert('Updated successful!');
             navigate('/Setting');
         } catch (error) {
             console.error('Error:', error);
         }
-    }; 
+    };
     useEffect(() => {
         document.body.style.overflowY = 'hidden';
         return () => {
@@ -86,7 +83,7 @@ export const ResetModal = ({ closeModal, user }) => {
                         type="text"
                         value={firstname}
                         placeholder='Enter your first name'
-                        onChange={e =>setFirstName(e.target.value)}  />
+                        onChange={e => setFirstName(e.target.value)} />
                     <input className=" w-1/2 p-2 border rounded-3xl"
                         type="text"
                         value={lastname}

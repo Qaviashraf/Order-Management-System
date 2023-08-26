@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-// import './PswdModal.css'
-import { ImCancelCircle } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
+// ICON
+import { ImCancelCircle } from 'react-icons/im'
+
 export const LogoutModal=({closeModal}) =>{
     const navigate = useNavigate();
     useEffect(() => {
@@ -14,13 +15,6 @@ export const LogoutModal=({closeModal}) =>{
         navigate('/')
       }
 
-    // const onChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setEditrecords(prevState => ({
-    //         ...prevState,
-    //         [name]: value,
-    //     }));
-    // }
 
 return (
     <>

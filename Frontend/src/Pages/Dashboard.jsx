@@ -71,15 +71,19 @@ export const Dashboard = () => {
 
         <div className="dark:bg-slate-700 m-2 border-black border-2 rounded-2xl  w-4/5 h-full shadow-xl shadow-black">
 
-            <div className="flex dark:text-white m-2 w-fit text-xl font-semibold tracking-widest text-gray text-slate-800">
+            <div className="flex justify-between dark:text-white m-2 text-xl font-semibold tracking-widest text-gray text-slate-800">
+                <div className="flex ">
                 <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
-                <h1 className='mt-4 ml-2 mr-96 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
+                <h1 className='mt-4 ml-2 mr-80 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
+                </div>
+                <div className="flex ">
                 <Link
                     to="/Notifications"
                     onClick={handleClick}>
-                    <BsBell className='ml-96 mt-4 text-2xl' />
+                    <BsBell className=' mt-4 text-2xl' />
                 </Link>
                 <span className='bg-red-700 rounded-full h-fit w-fit text-xs text-white  px-1.5 py-0.5'>{todaysOrders.length}</span>
+            </div>
             </div>
 
 

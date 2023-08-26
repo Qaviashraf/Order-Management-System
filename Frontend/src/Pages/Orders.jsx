@@ -57,7 +57,7 @@ export const Orders = () => {
   }, [orders, selectedFilter]);
 
   return (
-    <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
+    <div className='m-2 w-full border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
       <div className="flex justify-between">
         <div className="m-2 dark:border-white px-0.5 border-black border-2 rounded-3xl h-fit">
           <input type="text" placeholder="Search By ID" className="dark:bg-slate-700  ml-1 pl-2 h-7  outline-none" onChange={Filter} />
@@ -69,7 +69,7 @@ export const Orders = () => {
             onChange={(e) => {
               setSelectedFilter(e.target.value);
               applyFilter();
-            }} className='h-fit m-3 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
+            }} className='h-fit m-3  p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
              <option value="">Filter</option>
              <option value="">Both</option>
             <option value="Pending">Only Pending Order</option>

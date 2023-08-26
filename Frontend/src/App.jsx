@@ -27,7 +27,7 @@ function App() {
 
   return (
 
-    <div className='dark:bg-slate-500 flex  h-full pt-2 pb-2'>
+    <div className='dark:bg-slate-500 flex  h-full pt-2 pb-8'>
 
       {!hideSidebar && <Sidebar />}
       <Routes>

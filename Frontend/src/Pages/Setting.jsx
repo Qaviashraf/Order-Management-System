@@ -47,7 +47,7 @@ export const Setting = () => {
       </div>
       <div className="m-10 font-bold">
         <div>
-          <h1 className=" dark:text-white text-3xl mt-5">Edit Profiile</h1>
+          <h1 className=" dark:text-white text-3xl mt-5">Edit Profile</h1>
           <div onClick={handleClick} className="text-xl ml-4  ">
             <div className="flex justify-between bg-slate-200 m-2 p-3 shadow-lg cursor-pointer ">
               <p className="hover:opacity-10">Change your Password </p>
@@ -78,7 +78,6 @@ export const Setting = () => {
                 onClick={toggleTheme}
                 className="mr-5 border-black border-2  rounded-3xl flex"
               >
-                {/* <DarkMode toogleTheme={toggleTheme} theme={theme} /> */}
                 <div
                   className={
                     theme === "light"
