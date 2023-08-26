@@ -9,6 +9,8 @@ import { BiSolidLock } from 'react-icons/Bi'
 
 
 export const ResetModal = ({ closeModal, user }) => {
+
+    axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
 
     const [firstname, setFirstName] = useState(user.firstname);
@@ -39,7 +41,7 @@ export const ResetModal = ({ closeModal, user }) => {
 
             const id = localStorage.getItem('id');
 
-            const response = await axios.put(`http://localhost:3001/users/${id}`, updatedUser); // Use the correct route here
+            const response = await axios.put(`https://order-management-system-api.vercel.app/users/${id}`, updatedUser); // Use the correct route here
             console.log(response.data);
 
             setFirstName('');

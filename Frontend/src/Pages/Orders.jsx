@@ -8,6 +8,7 @@ import axios from 'axios'
 
 export const Orders = () => {
 
+  axios.defaults.withCredentials = true ;
   const [orders, setOrders] = useState([]);
   const [findOrders, setFindOrders] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -18,7 +19,7 @@ export const Orders = () => {
   const getData = async () => {
     try {
       const id = localStorage.getItem('id');
-      const resp = await axios.get(`http://localhost:3001/user/${id}`);
+      const resp = await axios.get(`https://order-management-system-api.vercel.app/user/${id}`);
 
       if (resp.data.orders) {
         const extractedOrders = resp.data.orders;

@@ -11,7 +11,8 @@ import { PieGraph } from '../components/PieGraph'
 import { BsBell } from 'react-icons/Bs'
 
 export const Dashboard = () => {
-
+    
+    axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,7 @@ export const Dashboard = () => {
     useEffect(() => {
         const id = localStorage.getItem('id');
 
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`https://order-management-system-api.vercel.app/user/${id}`)
             .then(response => {
                 setUser(response.data);
                 setLoading(false);

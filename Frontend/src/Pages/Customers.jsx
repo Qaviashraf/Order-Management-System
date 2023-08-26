@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 export const Customers = () => {
+  axios.defaults.withCredentials = true ;
   const [user, setUser] = useState(null);
   const [searchText, setSearchText] = useState('');
   const [filteredOrders, setFilteredOrders] = useState([]);
@@ -12,7 +13,7 @@ export const Customers = () => {
   useEffect(() => {
     const id = localStorage.getItem('id');
     axios
-      .get(`http://localhost:3001/user/${id}`)
+      .get(`https://order-management-system-api.vercel.app/user/${id}`)
       .then(response => {
         setUser(response.data);
       })

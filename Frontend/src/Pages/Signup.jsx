@@ -11,7 +11,7 @@ import { BiSolidLock } from 'react-icons/Bi'
 
 export const Signup = () => {
 
-
+    axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -33,7 +33,7 @@ export const Signup = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3001/user/check-email', { email });
+            const response = await axios.post('https://order-management-system-api.vercel.app/user/check-email', { email });
 
             if (response.data.exists) {
                 setErrorMessage('Email is already registered.');
@@ -47,7 +47,7 @@ export const Signup = () => {
                 };
 
                 // Make API call to create the user
-                await axios.post('http://localhost:3001/user', newUser);
+                await axios.post('https://order-management-system-api.vercel.app/user', newUser);
 
                 setFirstName('');
                 setLastName('');

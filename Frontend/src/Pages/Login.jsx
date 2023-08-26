@@ -11,6 +11,7 @@ import { BiSolidLock } from 'react-icons/Bi'
 
 export const Login = () => {
 
+    axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
     const [loginError, setLoginError] = useState(false);
     const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/login', { email, password });
+            const response = await axios.post('https://order-management-system-api.vercel.app/login', { email, password });
             console.log("hello")
             if (response.data.status === "Success") {
                 const userId = response.data.userId;

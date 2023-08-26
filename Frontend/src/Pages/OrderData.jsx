@@ -7,6 +7,7 @@ import axios from 'axios'
 
 function OrderData({ Order, setOrders }) {
 
+  axios.defaults.withCredentials = true ;
   const [sendData, setSenddata] = useState()
   //pagination
   const itemPerPage = 9;
@@ -27,7 +28,7 @@ function OrderData({ Order, setOrders }) {
   const handleDelete = async (orderId) => {
     const userId = localStorage.getItem('id')
     try {
-      const res = await axios.delete(`http://localhost:3001/users/${userId}/orders/${orderId}`);
+      const res = await axios.delete(`https://order-management-system-api.vercel.app/users/${userId}/orders/${orderId}`);
       setdelModal(false);
       setSenddata('');
       setOrders(prevOrders => prevOrders.filter(prevOrder => prevOrder.order_id !== orderId))
@@ -45,7 +46,7 @@ function OrderData({ Order, setOrders }) {
   const fetchdata = async () => {
     try {
       const id = localStorage.getItem('id');
-      const resp = await axios.get(`http://localhost:3001/user/${id}`);
+      const resp = await axios.get(`https://order-management-system-api.vercel.app/user/${id}`);
       
       if(resp.data.orders){
         const extractedOrders = resp.data.orders;
@@ -59,7 +60,7 @@ function OrderData({ Order, setOrders }) {
   const handleUpdate = async (order) => {
     try{
       const userId = localStorage.getItem('id');
-      const res = await axios.put(`http://localhost:3001/users/${userId}/orders/${order.order_id}`, order)
+      const res = await axios.put(`https://order-management-system-api.vercel.app/${userId}/orders/${order.order_id}`, order)
       fetchdata();
       closeModal();
     }catch(e){

@@ -3,7 +3,9 @@ import { PasswordModal } from "../components/Popup/PswdModal.jsx";
 import { LogoutModal } from "../components/Popup/LgoutModal.jsx";
 
 export const Setting = () => {
+
   const [show, setshow] = useState(false);
+
   const closeModal = () => {
     setshow(false);
   };
@@ -18,12 +20,15 @@ export const Setting = () => {
     setshow1(true);
   };
   const [theme, settheme] = useState("light");
+  
   useEffect(() => {
     settheme(JSON.parse(window.localStorage.getItem("theme")));
   }, []);
+
   useEffect(() => {
     window.localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -35,6 +40,7 @@ export const Setting = () => {
   const toggleTheme = () => {
     settheme(theme === "dark" ? "light" : "dark");
   };
+
   return (
     <div className=" dark:bg-slate-700  m-2 border-black border-2 rounded-2xl w-4/5  shadow-xl shadow-black">
       <div className="m-8">

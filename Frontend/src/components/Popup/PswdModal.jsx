@@ -6,6 +6,8 @@ import { ImCancelCircle } from 'react-icons/im'
 
 
 export const PasswordModal = ({ closeModal }) => {
+
+    axios.defaults.withCredentials = true ;
     const [show, setshow] = useState(false);
     const [password, setpassword] = useState('')
     const [user, setUser] = useState(null);
@@ -14,7 +16,7 @@ export const PasswordModal = ({ closeModal }) => {
     useEffect(() => {
         const id = localStorage.getItem('id');
 
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`https://order-management-system-api.vercel.app/user/${id}`)
             .then(response => {
                 setUser(response.data);
             })

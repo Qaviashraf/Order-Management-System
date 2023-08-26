@@ -5,6 +5,8 @@ import { MdDeleteOutline } from 'react-icons/Md'
 
 
 export const Notifications = () => {
+
+    axios.defaults.withCredentials = true ;
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [notifications, setNotifications] = useState([]);
@@ -13,7 +15,7 @@ export const Notifications = () => {
         const id = localStorage.getItem('id');
 
         // Fetch user data using id from the backend
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`https://order-management-system-api.vercel.app/user/${id}`)
             .then(response => {
                 setUser(response.data);
                 setLoading(false);

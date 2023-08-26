@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 export const AddOrders = () => {
-
+  axios.defaults.withCredentials = true ;
   const [createdata, setCreateData] = useState({
     customer_name: '',
     mobile_number: '',
@@ -34,7 +34,7 @@ export const AddOrders = () => {
         alert("All fields are required");
         return
       }
-      const res = await axios.post(`http://localhost:3001/users/${userId}/orders`, {
+      const res = await axios.post(`https://order-management-system-api.vercel.app/users/${userId}/orders`, {
         customer_name,
         mobile_number,
         email,
