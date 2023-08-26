@@ -72,7 +72,7 @@ export const Orders = () => {
             onChange={(e) => {
               setSelectedFilter(e.target.value);
               applyFilter();
-            }} className='h-fit m-3  p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
+            }} className='h-fit m-3 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
              <option value="">Filter</option>
              <option value="">Both</option>
             <option value="Pending">Only Pending Order</option>

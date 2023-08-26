@@ -136,7 +136,7 @@ function OrderData({ Order, setOrders }) {
 
       <tr>
         <td colSpan={10} className='border-none'>
-          <div className='mt-2 flex justify-end mt-[-25px] mr-16'>
+          <div className='mt-4 flex justify-end mt-[-25px] mr-16'>
 
             <button onClick={() => handlePageChange(currentPage - 1)} className='bg-black text-white mx-1 px-2 text-2xl hover:opacity-30' disabled={currentPage < 1}>&lt;</button>
 
