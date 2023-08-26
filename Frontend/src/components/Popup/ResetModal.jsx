@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 // ICONS
 import { ImCancelCircle } from 'react-icons/im'
-import { CiUser } from 'react-icons/Ci'
-import { MdEmail } from 'react-icons/Md'
-import { BiSolidLock } from 'react-icons/Bi'
+import { MdEmail } from 'react-icons/md'
+import { BiSolidLock } from 'react-icons/bi'
 
 
 export const ResetModal = ({ closeModal, user }) => {

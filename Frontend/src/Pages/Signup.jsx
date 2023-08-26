@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 // ICONS
-import { CiUser } from 'react-icons/Ci'
-import { MdEmail } from 'react-icons/Md'
-import { BiSolidLock } from 'react-icons/Bi'
+import { CiUser } from 'react-icons/ci'
+import { MdEmail } from 'react-icons/md'
+import { BiSolidLock } from 'react-icons/bi'
 
 
 

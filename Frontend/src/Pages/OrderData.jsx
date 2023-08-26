@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./Order.css"
-import { AiFillEdit, AiFillDelete } from "react-icons/Ai"
+import { AiFillEdit, AiFillDelete } from "react-icons/ai"
 import EditModal from './EditModal'
 import DeleteModal from './DeleteModal';
 import axios from 'axios'

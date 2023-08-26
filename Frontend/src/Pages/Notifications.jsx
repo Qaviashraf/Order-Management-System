@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // ICON
-import { MdDeleteOutline } from 'react-icons/Md'
+import { MdDeleteOutline } from 'react-icons/md'
 
 
 export const Notifications = () => {

@@ -8,7 +8,7 @@ import { LineGraph } from '../components/LineGraph'
 import { PieGraph } from '../components/PieGraph'
 
 // ICONS
-import { BsBell } from 'react-icons/Bs'
+import { BsBell } from 'react-icons/bs'
 
 export const Dashboard = () => {
     
