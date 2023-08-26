@@ -12,7 +12,7 @@ export const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [findOrders, setFindOrders] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("");
-  const [loading, setLoading] = useState(true);
+
 
   const navigate = useNavigate();
 
@@ -26,25 +26,15 @@ export const Orders = () => {
         const extractedOrders = resp.data.orders;
         setOrders(extractedOrders);
         setFindOrders(extractedOrders);
-        setLoading(false);
       }
     } catch (e) {
       console.log("Error:", e);
-      setLoading(false);
     }
   };
   useEffect(() => {
     getData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
-        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-        <p >Loading...</p>
-      </div>
-    );
-  }
 
   const CrOrderPage = () => {
     navigate('/AddOrders')
