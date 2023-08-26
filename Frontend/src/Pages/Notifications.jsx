@@ -6,7 +6,7 @@ import { MdDeleteOutline } from 'react-icons/md'
 
 export const Notifications = () => {
 
-    axios.defaults.withCredentials = true ;
+    axios.defaults.withCredentials = true;
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [notifications, setNotifications] = useState([]);
@@ -44,10 +44,11 @@ export const Notifications = () => {
     };
     console.log(notifications)
     if (loading) {
-        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
-            <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-            <p >Loading...</p>
-        </div>
+        return (
+            <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+                <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+                <p >Loading...</p>
+            </div>)
     }
 
 

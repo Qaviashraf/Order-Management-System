@@ -11,8 +11,8 @@ import { PieGraph } from '../components/PieGraph'
 import { BsBell } from 'react-icons/bs'
 
 export const Dashboard = () => {
-    
-    axios.defaults.withCredentials = true ;
+
+    axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -50,11 +50,12 @@ export const Dashboard = () => {
     };
 
     if (loading) {
-        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
-            <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-            <p >Loading...</p>
-        </div>
-
+        return (
+            <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+                <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+                <p >Loading...</p>
+            </div>
+        )
     }
 
     if (!user) {
@@ -74,17 +75,17 @@ export const Dashboard = () => {
 
             <div className="flex justify-between dark:text-white m-2 text-xl font-semibold tracking-widest text-gray text-slate-800">
                 <div className="flex ">
-                <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
-                <h1 className='mt-4 ml-2 mr-80 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
+                    <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
+                    <h1 className='mt-4 ml-2 mr-80 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
                 </div>
                 <div className="flex ">
-                <Link
-                    to="/Notifications"
-                    onClick={handleClick}>
-                    <BsBell className=' mt-4 text-2xl' />
-                </Link>
-                <span className='bg-red-700 rounded-full h-fit w-fit text-xs text-white  px-1.5 py-0.5'>{todaysOrders.length}</span>
-            </div>
+                    <Link
+                        to="/Notifications"
+                        onClick={handleClick}>
+                        <BsBell className=' mt-4 text-2xl' />
+                    </Link>
+                    <span className='bg-red-700 rounded-full h-fit w-fit text-xs text-white  px-1.5 py-0.5'>{todaysOrders.length}</span>
+                </div>
             </div>
 
 

@@ -5,10 +5,11 @@ import axios from 'axios';
 
 
 export const Customers = () => {
-  axios.defaults.withCredentials = true ;
+  axios.defaults.withCredentials = true;
   const [user, setUser] = useState(null);
   const [searchText, setSearchText] = useState('');
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const id = localStorage.getItem('id');
@@ -16,9 +17,11 @@ export const Customers = () => {
       .get(`https://order-management-system-api.vercel.app/user/${id}`)
       .then(response => {
         setUser(response.data);
+        setLoading(false);
       })
       .catch(error => {
         console.error(error);
+        setLoading(false);
       });
   }, []);
 
@@ -26,6 +29,15 @@ export const Customers = () => {
     const filtered = user ? user.orders.filter(order => order.customer_name.includes(searchText)) : [];
     setFilteredOrders(filtered);
   }, [user, searchText]);
+
+  if (loading) {
+    return (
+      <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+        <p >Loading...</p>
+      </div>
+    );
+  }
 
   const customerOrdersMap = filteredOrders.reduce((map, order) => {
     if (!map.has(order.email)) {
