@@ -13,7 +13,7 @@ import { AiOutlineLogout } from 'react-icons/ai'
 export const Sidebar = () => {
 
   return (
-    <div className="flex flex-col pb-64 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
+    <div className="flex flex-col pb-52 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
       <div className="">
 
         <div className='flex justify-center'>

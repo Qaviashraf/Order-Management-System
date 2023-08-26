@@ -52,7 +52,7 @@ export const Customers = () => {
 
 
   return (
-    <div className="w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
+    <div className="max-w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
       <div className="flex ">
         <div className="dark:border-white m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
           <input
