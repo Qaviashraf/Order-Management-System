@@ -86,7 +86,7 @@ export const Orders = () => {
       </div>
 
       <div>
-        <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-7xl'>
+        <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-3xl'>
           <thead className=' text-lg bg-purple-800 text-white'>
             <tr>
               <th>Order Id</th>

@@ -43,7 +43,7 @@ export const Setting = () => {
 
   return (
     <div className=" dark:bg-slate-700  m-2 border-black border-2 rounded-2xl w-4/5  shadow-xl shadow-black">
-      <div className="m-8">
+      <div className="m-5">
         <div className=" dark:text-white flex justify-between mb-2 font-bold w-full">
           <h1 className=" text-5xl ">Setting</h1>
         </div>
