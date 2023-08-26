@@ -8,9 +8,11 @@ import axios from 'axios'
 
 export const Orders = () => {
 
+  axios.defaults.withCredentials = true ;
   const [orders, setOrders] = useState([]);
   const [findOrders, setFindOrders] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("");
+
 
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ export const Orders = () => {
   const getData = async () => {
     try {
       const id = localStorage.getItem('id');
-      const resp = await axios.get(`http://localhost:3001/user/${id}`);
+      const resp = await axios.get(`https://order-management-system-api.vercel.app/user/${id}`);
 
       if (resp.data.orders) {
         const extractedOrders = resp.data.orders;
@@ -56,8 +58,9 @@ export const Orders = () => {
     applyFilter(); 
   }, [orders, selectedFilter]);
 
+
   return (
-    <div className='m-2 border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
+    <div className='m-2 w-full border-black border-2 rounded-2xl shadow-xl shadow-black dark:bg-slate-700'>
       <div className="flex justify-between">
         <div className="m-2 dark:border-white px-0.5 border-black border-2 rounded-3xl h-fit">
           <input type="text" placeholder="Search By ID" className="dark:bg-slate-700  ml-1 pl-2 h-7  outline-none" onChange={Filter} />
@@ -69,7 +72,7 @@ export const Orders = () => {
             onChange={(e) => {
               setSelectedFilter(e.target.value);
               applyFilter();
-            }} className='h-fit m-3 p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
+            }} className='h-fit m-3  p-2 px-6 text-white bg-gray-800 rounded-3xl border-2 hover:bg-gray-700 hover:border-black text-[16px]'>
              <option value="">Filter</option>
              <option value="">Both</option>
             <option value="Pending">Only Pending Order</option>
@@ -85,8 +88,8 @@ export const Orders = () => {
       </div>
 
       <div>
-        <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-7xl'>
-          <thead className=' text-lg bg-purple-800 text-white'>
+        <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-lg'>
+          <thead className=' text-base bg-purple-800 text-white'>
             <tr>
               <th>Order Id</th>
               <th>Customer Name</th>

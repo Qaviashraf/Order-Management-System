@@ -5,19 +5,23 @@ import axios from 'axios';
 
 
 export const Customers = () => {
+  axios.defaults.withCredentials = true;
   const [user, setUser] = useState(null);
   const [searchText, setSearchText] = useState('');
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const id = localStorage.getItem('id');
     axios
-      .get(`http://localhost:3001/user/${id}`)
+      .get(`https://order-management-system-api.vercel.app/user/${id}`)
       .then(response => {
         setUser(response.data);
+        setLoading(false);
       })
       .catch(error => {
         console.error(error);
+        setLoading(false);
       });
   }, []);
 
@@ -25,6 +29,15 @@ export const Customers = () => {
     const filtered = user ? user.orders.filter(order => order.customer_name.includes(searchText)) : [];
     setFilteredOrders(filtered);
   }, [user, searchText]);
+
+  if (loading) {
+    return (
+      <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+        <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+        <p >Loading...</p>
+      </div>
+    );
+  }
 
   const customerOrdersMap = filteredOrders.reduce((map, order) => {
     if (!map.has(order.email)) {
@@ -51,7 +64,7 @@ export const Customers = () => {
 
 
   return (
-    <div className="w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
+    <div className="max-w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
       <div className="flex ">
         <div className="dark:border-white m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
           <input

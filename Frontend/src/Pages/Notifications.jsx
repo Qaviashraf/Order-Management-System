@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // ICON
-import { MdDeleteOutline } from 'react-icons/Md'
+import { MdDeleteOutline } from 'react-icons/md'
 
 
 export const Notifications = () => {
+
+    axios.defaults.withCredentials = true;
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [notifications, setNotifications] = useState([]);
@@ -13,7 +15,7 @@ export const Notifications = () => {
         const id = localStorage.getItem('id');
 
         // Fetch user data using id from the backend
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`https://order-management-system-api.vercel.app/user/${id}`)
             .then(response => {
                 setUser(response.data);
                 setLoading(false);
@@ -42,10 +44,11 @@ export const Notifications = () => {
     };
     console.log(notifications)
     if (loading) {
-        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
-            <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-            <p >Loading...</p>
-        </div>
+        return (
+            <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+                <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+                <p >Loading...</p>
+            </div>)
     }
 
 

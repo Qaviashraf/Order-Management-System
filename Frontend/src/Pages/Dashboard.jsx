@@ -8,10 +8,11 @@ import { LineGraph } from '../components/LineGraph'
 import { PieGraph } from '../components/PieGraph'
 
 // ICONS
-import { BsBell } from 'react-icons/Bs'
+import { BsBell } from 'react-icons/bs'
 
 export const Dashboard = () => {
 
+    axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,7 @@ export const Dashboard = () => {
     useEffect(() => {
         const id = localStorage.getItem('id');
 
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`https://order-management-system-api.vercel.app/user/${id}`)
             .then(response => {
                 setUser(response.data);
                 setLoading(false);
@@ -49,11 +50,12 @@ export const Dashboard = () => {
     };
 
     if (loading) {
-        return <div className="items-center h-screen ml-96 mt-72 pl-52 text-3xl">
-            <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
-            <p >Loading...</p>
-        </div>
-
+        return (
+            <div className="items-center h-screen ml-96 mt-72 pl-44 text-3xl">
+                <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+                <p >Loading...</p>
+            </div>
+        )
     }
 
     if (!user) {
@@ -71,31 +73,35 @@ export const Dashboard = () => {
 
         <div className="dark:bg-slate-700 m-2 border-black border-2 rounded-2xl  w-4/5 h-full shadow-xl shadow-black">
 
-            <div className="flex dark:text-white m-2 w-fit text-xl font-semibold tracking-widest text-gray text-slate-800">
-                <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
-                <h1 className='mt-4 ml-2 mr-96 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
-                <Link
-                    to="/Notifications"
-                    onClick={handleClick}>
-                    <BsBell className='ml-96 mt-4 text-2xl' />
-                </Link>
-                <span className='bg-red-700 rounded-full h-fit w-fit text-xs text-white  px-1.5 py-0.5'>{todaysOrders.length}</span>
+            <div className="flex justify-between dark:text-white m-2 text-xl font-semibold tracking-widest text-gray text-slate-800">
+                <div className="flex ">
+                    <img style={{ width: 50, height: 50 }} src="https://hansjoerg.me/img/avatar.png" alt="" />
+                    <h1 className='mt-4 ml-2 mr-80 pr-36'>Hi,{user.firstname} {user.lastname}</h1>
+                </div>
+                <div className="flex ">
+                    <Link
+                        to="/Notifications"
+                        onClick={handleClick}>
+                        <BsBell className=' mt-4 text-2xl' />
+                    </Link>
+                    <span className='bg-red-700 rounded-full h-fit w-fit text-xs text-white  px-1.5 py-0.5'>{todaysOrders.length}</span>
+                </div>
             </div>
 
 
             <div className='flex justify-center '>
 
-                <div className=' border-black border-4 rounded-3xl m-10 pl-10 pt-8 w-72 h-48 bg-slate-300 text-4xl text-bold '>
+                <div className=' border-black border-4 rounded-3xl m-5 pl-10 pt-8 w-72 h-48 bg-slate-300 text-3xl text-bold '>
                     <h1 className='ml-2'>Total Orders </h1>
                     <h1 className='ml-20 mt-4'>{totalOrders}</h1>
                 </div>
 
-                <div className=' border-black border-4 rounded-3xl m-10 pl-2 pt-8 w-72 h-48 bg-gray-400 text-4xl text-bold'>
+                <div className=' border-black border-4 rounded-3xl m-5 pl-2 pt-8 w-72 h-48 bg-gray-400 text-3xl text-bold'>
                     <h1 className='m-0'>Delivered Orders </h1>
                     <h1 className='ml-28 mt-4'>{deliveredOrders}</h1>
                 </div>
 
-                <div className=' border-black border-4 rounded-3xl m-10 pl-2 pt-8 w-72 h-48 bg-slate-400 text-4xl text-bold'>
+                <div className=' border-black border-4 rounded-3xl m-5 pl-2 pt-8 w-72 h-48 bg-slate-400 text-3xl text-bold'>
                     <h1 className='ml-2'>Pending Orders </h1>
                     <h1 className='ml-28 mt-4'>{pendingOrders}</h1>
                 </div>

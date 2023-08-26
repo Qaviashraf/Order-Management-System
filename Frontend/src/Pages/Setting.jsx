@@ -3,7 +3,9 @@ import { PasswordModal } from "../components/Popup/PswdModal.jsx";
 import { LogoutModal } from "../components/Popup/LgoutModal.jsx";
 
 export const Setting = () => {
+
   const [show, setshow] = useState(false);
+
   const closeModal = () => {
     setshow(false);
   };
@@ -18,12 +20,15 @@ export const Setting = () => {
     setshow1(true);
   };
   const [theme, settheme] = useState("light");
+  
   useEffect(() => {
     settheme(JSON.parse(window.localStorage.getItem("theme")));
   }, []);
+
   useEffect(() => {
     window.localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -35,9 +40,10 @@ export const Setting = () => {
   const toggleTheme = () => {
     settheme(theme === "dark" ? "light" : "dark");
   };
+
   return (
     <div className=" dark:bg-slate-700  m-2 border-black border-2 rounded-2xl w-4/5  shadow-xl shadow-black">
-      <div className="m-8">
+      <div className="m-5">
         <div className=" dark:text-white flex justify-between mb-2 font-bold w-full">
           <h1 className=" text-5xl ">Setting</h1>
         </div>
@@ -47,7 +53,7 @@ export const Setting = () => {
       </div>
       <div className="m-10 font-bold">
         <div>
-          <h1 className=" dark:text-white text-3xl mt-5">Edit Profiile</h1>
+          <h1 className=" dark:text-white text-3xl mt-5">Edit Profile</h1>
           <div onClick={handleClick} className="text-xl ml-4  ">
             <div className="flex justify-between bg-slate-200 m-2 p-3 shadow-lg cursor-pointer ">
               <p className="hover:opacity-10">Change your Password </p>
@@ -78,7 +84,6 @@ export const Setting = () => {
                 onClick={toggleTheme}
                 className="mr-5 border-black border-2  rounded-3xl flex"
               >
-                {/* <DarkMode toogleTheme={toggleTheme} theme={theme} /> */}
                 <div
                   className={
                     theme === "light"

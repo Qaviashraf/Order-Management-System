@@ -1,27 +1,27 @@
-// ICONS
+
 import { Link } from "react-router-dom";
-import { SiGoogletagmanager } from 'react-icons/Si'
-import { LuLayoutDashboard } from 'react-icons/Lu'
-import { TbListDetails } from 'react-icons/Tb'
-import { PiUserFocusThin } from 'react-icons/Pi'
-import { AiFillSetting } from 'react-icons/Ai'
-import { BsBell } from 'react-icons/Bs'
-import { AiOutlineLogout } from 'react-icons/Ai'
+// ICONS
+import { SiGoogletagmanager } from 'react-icons/si'
+import { LuLayoutDashboard } from 'react-icons/lu'
+import { TbListDetails } from 'react-icons/tb'
+import { PiUserFocusThin } from 'react-icons/pi'
+import { AiFillSetting } from 'react-icons/ai'
+import { BsBell } from 'react-icons/bs'
+import { AiOutlineLogout } from 'react-icons/ai'
 
 
 export const Sidebar = () => {
 
   return (
-    <div className="flex flex-col pb-72 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
+    <div className="flex flex-col pb-36 pt-12 p-8 m-2 w-fit bg-gray-900 text-white rounded-xl shadow-2xl shadow-black">
       <div className="">
 
         <div className='flex justify-center'>
           <SiGoogletagmanager className='p-2 text-5xl' />
-          <div className="text-xl font-bold mb-9 p-2">My Orders</div>
+          <div className="text-xl font-bold mb-9 p-2">Order Book</div>
         </div>
 
         <div className="flex flex-col space-y-2">
-
           <Link to="/Dashboard" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800 rounded">
             <LuLayoutDashboard className="m-2 mr-4 text-xl" />
             <div className="text-lg ">
@@ -57,7 +57,7 @@ export const Sidebar = () => {
             </div>
           </Link>
 
-          <Link to="/" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800  rounded">
+          <Link to="/" className="flex cursor-pointer pt-1 hover:bg-gray-800  rounded">
             <AiOutlineLogout className="m-2 mr-4 text-xl" />
             <div className="text-lg">
               Logout

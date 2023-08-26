@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './EditModal.css'
+// ICON
 import { ImCancelCircle } from 'react-icons/im'
 
 function EditModal({ closeModal, edit, handleUpdate }) {
@@ -18,12 +19,6 @@ function EditModal({ closeModal, edit, handleUpdate }) {
         delivery_date: delivery_date
 
     })
-
-    // useEffect(() => {
-    //     console.log(order_id, customer_name, mobile_number, email, address, product, status, delivery_date
-    //         );
-    //     console.log(edit);
-    // },[])
 
     useEffect(() => {
         document.body.style.overflowY = 'hidden';

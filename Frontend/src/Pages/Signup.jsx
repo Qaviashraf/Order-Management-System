@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 // ICONS
-import { CiUser } from 'react-icons/Ci'
-import { MdEmail } from 'react-icons/Md'
-import { BiSolidLock } from 'react-icons/Bi'
+import { CiUser } from 'react-icons/ci'
+import { MdEmail } from 'react-icons/md'
+import { BiSolidLock } from 'react-icons/bi'
 
 
 
 export const Signup = () => {
 
-
+    axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -33,7 +33,7 @@ export const Signup = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3001/user/check-email', { email });
+            const response = await axios.post('https://order-management-system-api.vercel.app/user/check-email', { email });
 
             if (response.data.exists) {
                 setErrorMessage('Email is already registered.');
@@ -47,7 +47,7 @@ export const Signup = () => {
                 };
 
                 // Make API call to create the user
-                await axios.post('http://localhost:3001/user', newUser);
+                await axios.post('https://order-management-system-api.vercel.app/user', newUser);
 
                 setFirstName('');
                 setLastName('');
@@ -66,7 +66,7 @@ export const Signup = () => {
 
     return (
 
-        <div className="flex justify-around items-center mt-10 min-w-full min-h-full">
+        <div className="flex justify-around items-center mt-5 mb-5 min-w-full min-h-full">
             <div className=" w-full max-w-md p-6 bg-gray bg-slate-200 rounded-lg shadow-lg shadow-black">
                 <CiUser className="mx-32 my-4 p-2 text-9xl rounded-full border-2 border-black" />
                 <h1 className="flex justify-center text-3xl font-semibold mb-4 mr-4">Sign In</h1>
