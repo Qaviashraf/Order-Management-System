@@ -5,7 +5,13 @@ const User = require('./User')
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+  {
+    origin: [""],
+    methods: ["Get", "Post"],
+    credentials: true
+  }
+))
 
 // Used for auto-generated id
 const usedIds = new Set();
@@ -116,32 +122,32 @@ app.post('/users/:userId/orders', async (req, res) => {
 });
 
 // Update the order
-app.put('/users/:userId/orders/:orderId', async (req, res)=> {
-      try{
-        const userId = req.params.userId;
-        const orderId = req.params.orderId;
-        const orderData = req.body;
+app.put('/users/:userId/orders/:orderId', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const orderId = req.params.orderId;
+    const orderData = req.body;
 
-        // console.log(orderData);
-        const user = await User.findById(userId);
-        
-        if(!user){
-          return res.status(404).json({message: 'User not found'});
-        }
+    // console.log(orderData);
+    const user = await User.findById(userId);
 
-        const orderToUpdate = user.orders.find(order => order.order_id.toString() === orderId)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
-        if(!orderToUpdate) {
-          return res.status(404).json({message: 'Order not found'});
-        }
-        Object.assign(orderToUpdate, orderData)
-        await user.save();
-        res.status(200).json({ message: 'Order updated successfully', user });
-      }catch(e){
-        console.log(e);
-        res.status(500).json({ message: 'Internal server error', error: error.message });
-      }
-  })
+    const orderToUpdate = user.orders.find(order => order.order_id.toString() === orderId)
+
+    if (!orderToUpdate) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+    Object.assign(orderToUpdate, orderData)
+    await user.save();
+    res.status(200).json({ message: 'Order updated successfully', user });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+})
 
 // Delete the order 
 // DELETE route to handle order deletion by order_id
@@ -169,18 +175,18 @@ app.delete('/users/:userId/orders/:order_id', async (req, res) => {
 // Route to update user information
 app.put('/users/:id', async (req, res) => {
   try {
-      const userId = req.params.id;
-      const userData = req.body;
-      // console.log(userData)
-      const userToUpdate = await User.findByIdAndUpdate(userId, userData);
+    const userId = req.params.id;
+    const userData = req.body;
 
-      if (!userToUpdate) {
-          return res.status(404).json({ message: 'User not found' });
-      }
+    const userToUpdate = await User.findByIdAndUpdate(userId, userData);
 
-      res.status(200).json({ message: 'User updated successfully', user: userToUpdate });
+    if (!userToUpdate) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'User updated successfully', user: userToUpdate });
   } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Internal server error', error: error.message });
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 });

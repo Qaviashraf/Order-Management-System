@@ -17,11 +17,10 @@ export const Sidebar = () => {
 
         <div className='flex justify-center'>
           <SiGoogletagmanager className='p-2 text-5xl' />
-          <div className="text-xl font-bold mb-9 p-2">My Orders</div>
+          <div className="text-xl font-bold mb-9 p-2">Order Book</div>
         </div>
 
         <div className="flex flex-col space-y-2">
-
           <Link to="/Dashboard" className="flex cursor-pointer pt-1 pb-0.5 hover:bg-gray-800 rounded">
             <LuLayoutDashboard className="m-2 mr-4 text-xl" />
             <div className="text-lg ">
