@@ -29,7 +29,9 @@ mongoose.connect('mongodb+srv://qaviashraf:12345678Admin@nodeapi.iymng6r.mongodb
   })
 
 
-
+  app.get('/', (req,res)=>{
+    res.json("Backend Deployed");
+})
 
 app.post('/user/check-email', async (req, res) => {
   const { email } = req.body;
