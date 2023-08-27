@@ -26,7 +26,8 @@ export const Customers = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = user ? user.orders.filter(order => order.customer_name.includes(searchText)) : [];
+    const query =searchText.toLowerCase()
+    const filtered = user ? user.orders.filter(order => order.customer_name.includes(query)) : [];
     setFilteredOrders(filtered);
   }, [user, searchText]);
 
@@ -64,7 +65,7 @@ export const Customers = () => {
 
 
   return (
-    <div className="max-w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
+    <div className="w-full dark:bg-slate-700 m-2 border-black border-2 rounded-2xl shadow-xl shadow-black">
       <div className="flex ">
         <div className="dark:border-white m-2  px-0.5  border-black border-2  rounded-3xl h-fit ">
           <input
