@@ -126,25 +126,30 @@ app.post('/users/:userId/orders', async (req, res) => {
 // Update the order
 app.put('/users/:userId/orders/:orderId', async (req, res) => {
   try {
-    const { userId, orderId } = req.params;
+    const userId = req.params.userId;
+    const orderId = req.params.orderId;
     const orderData = req.body;
 
-    const user = await User.findOneAndUpdate(
-      { _id: userId, 'orders.order_id': orderId },
-      { $set: { 'orders.$': orderData } },
-      { new: true }
-    );
+    // console.log(orderData);
+    const user = await User.findById(userId);
 
     if (!user) {
-      return res.status(404).json({ message: 'User or order not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
+    const orderToUpdate = user.orders.find(order => order.order_id.toString() === orderId)
+
+    if (!orderToUpdate) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+    Object.assign(orderToUpdate, orderData)
+    await user.save();
     res.status(200).json({ message: 'Order updated successfully', user });
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.log(e);
     res.status(500).json({ message: 'Internal server error', error: error.message });
   }
-});
+})
 
 // Delete the order 
 // DELETE route to handle order deletion by order_id
