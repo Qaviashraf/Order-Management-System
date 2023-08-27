@@ -58,17 +58,20 @@ function OrderData({ Order, setOrders }) {
   };
 
   const handleUpdate = async (order) => {
-    try{
+    try {
       const userId = localStorage.getItem('id');
       const orderId = order.order_id;
-      const res = await axios.put(`https://order-management-system-api.vercel.app/${userId}/orders/${orderId}`, order)
+
+      const res = await axios.put(`https://order-management-system-api.vercel.app/users/${userId}/orders/${orderId}`, order);
       fetchdata();
       closeModal();
-    }catch(e){
-      console.log(e);
+    } catch (error) {
+      if (error.response) {
+        console.log('Response data:', error.response.data);
+      }
     }
-    // console.log(order.order_id);
-  }
+  };
+
 
 
   const deleteModal = (order) => {
