@@ -92,17 +92,17 @@ export const Dashboard = () => {
             <div className='flex justify-center '>
 
                 <div className=' border-black border-4 rounded-3xl m-5 pl-10 pt-8 w-72 h-48 bg-slate-300 text-3xl text-bold '>
-                    <h1 className='ml-2'>Total Orders </h1>
+                    <h1 className='ml-4'>Total Orders </h1>
                     <h1 className='ml-20 mt-4'>{totalOrders}</h1>
                 </div>
 
                 <div className=' border-black border-4 rounded-3xl m-5 pl-2 pt-8 w-72 h-48 bg-gray-400 text-3xl text-bold'>
-                    <h1 className='m-0'>Delivered Orders </h1>
+                    <h1 className='m-4'>Delivered Orders </h1>
                     <h1 className='ml-28 mt-4'>{deliveredOrders}</h1>
                 </div>
 
                 <div className=' border-black border-4 rounded-3xl m-5 pl-2 pt-8 w-72 h-48 bg-slate-400 text-3xl text-bold'>
-                    <h1 className='ml-2'>Pending Orders </h1>
+                    <h1 className='ml-6'>Pending Orders </h1>
                     <h1 className='ml-28 mt-4'>{pendingOrders}</h1>
                 </div>
 
