@@ -60,7 +60,8 @@ function OrderData({ Order, setOrders }) {
   const handleUpdate = async (order) => {
     try{
       const userId = localStorage.getItem('id');
-      const res = await axios.put(`https://order-management-system-api.vercel.app/${userId}/orders/${order.order_id}`, order)
+      const orderId = order.order_id;
+      const res = await axios.put(`https://order-management-system-api.vercel.app/${userId}/orders/${orderId}`, order)
       fetchdata();
       closeModal();
     }catch(e){

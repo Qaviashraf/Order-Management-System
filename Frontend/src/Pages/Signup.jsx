@@ -66,8 +66,8 @@ export const Signup = () => {
 
     return (
 
-        <div className="flex justify-around items-center mt-5 mb-5 w-fit h-fit">
-            <div className=" w-full max-w-md p-6 bg-gray bg-slate-200 rounded-lg shadow-lg shadow-black">
+        <div className="flex justify-around items-center mt-5 mb-5 min-w-full min-h-full">
+            <div className=" w-full max-w-md h-fit p-6 bg-gray bg-slate-200 rounded-lg shadow-lg shadow-black">
                 <CiUser className="mx-32 my-4 p-2 text-9xl rounded-full border-2 border-black" />
                 <h1 className="flex justify-center text-3xl font-semibold mb-4 mr-4">Sign In</h1>
                 <div className="mb-4">
