@@ -72,7 +72,7 @@ export const ResetModal = ({ closeModal, user }) => {
 
             <div className='modal-container w-[100%]'>
                 <div className='flex justify-end my-2'>
-                    <button onClick={closeModal} className='opacity-40 hover:opacity-10 text-2xl'><ImCancelCircle /></button>
+                    <button onClick={returnsetting} className='opacity-40 hover:opacity-10 text-2xl'><ImCancelCircle /></button>
                 </div>
                 <div className="mb-4">
                     <p className='mb-4 text-lg font-medium'>Update Your Desired Feild</p>
