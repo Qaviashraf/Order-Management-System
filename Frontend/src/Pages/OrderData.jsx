@@ -94,7 +94,7 @@ function OrderData({ Order, setOrders }) {
           } = order;
 
           return (
-            <tr className='dark:text-white ' key={index}>
+            <tr  key={index}>
               <td className='cursor-pointer'>{order_id}</td>
               <td className='cursor-pointer' title={customer_name}>{customer_name.length > maxStringName ? customer_name.substring(0, maxStringName) + '...' : customer_name}</td>
               <td className='cursor-pointer' title={mobile_number}>{mobile_number.length > maxStringnum ? mobile_number.substring(0, maxStringnum) + '...' : mobile_number}</td>
