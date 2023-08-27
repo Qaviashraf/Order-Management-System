@@ -12,6 +12,7 @@ export const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [findOrders, setFindOrders] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const navigate = useNavigate();
@@ -27,8 +28,10 @@ export const Orders = () => {
         setOrders(extractedOrders);
         setFindOrders(extractedOrders);
       }
+      setIsLoading(false);
     } catch (e) {
       console.log("Error:", e);
+      setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -88,6 +91,12 @@ export const Orders = () => {
       </div>
 
       <div>
+      {isLoading ? (
+          <div className="items-center h-screen ml-96 mt-64 pl-44 text-3xl">
+          <img className="h-28" src="https://i.gifer.com/ZKZg.gif" ></img>
+          <p >Loading...</p>
+      </div>
+        ) : (
         <table className='my-5 mx-auto rounded-xl border-collapse shadow-md border-8 border-black-100 truncate max-w-lg bg-slate-200'>
           <thead className=' text-base bg-purple-800 text-white'>
             <tr>
@@ -107,6 +116,7 @@ export const Orders = () => {
             <OrderData Order={findOrders} setOrders={setFindOrders} />
           </tbody>
         </table>
+         )}
       </div>
 
     </div>
